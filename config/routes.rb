@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'homes/top'
   get 'articles/index'
   get 'articles/show'
   get 'articles/new'
@@ -16,6 +17,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
- root "articles#index"
+ root "homes#top"
  resources :articles
 end
