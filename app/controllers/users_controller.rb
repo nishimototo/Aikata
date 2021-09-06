@@ -18,6 +18,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+    @user = User.find(params[:id])
+  end
+
+  def withdraw
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会が完了しました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :profile_image, :introduction)
