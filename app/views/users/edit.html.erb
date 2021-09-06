@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+    <h4>プロフィール更新</h4>
+    <%= form_with model: @user, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :名前（※サイト上で公開されます）%>
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :メールアドレス（※サイト上で公開されません） %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :パスワード（※6文字以上） %>
+
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワードをもう一度入力してください %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :プロフィール画像 %>
+        <%= f.attachment_field :profile_image, class:"form-control-file" %>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :自己紹介 %>
+        <%= f.text_area :introduction, rows:"7", class:"form-control" %>
+      </div>
+      <%= f.submit "編集する", class: "btn btn-secondary offset-4" %>
+    <% end %>
+  </div>
+</div>
+

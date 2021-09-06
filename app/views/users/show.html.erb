@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="text-center">
+      <h3 class="mt-3"><%= @user.name %>さんのマイページ</h3>
+      <h5 class="mt-3">~自己紹介~</h5>
+      <%= @user.introduction %>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 mt-5">
+        <div class="user_box">
+          <p><i class="fas fa-users"></i> フォロー：</p>
+          <p><i class="fas fa-users"></i> フォロワー：</p>
+          <% if @user == current_user %>
+             <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
+            <i class="fas fa-hand-spock"></i> 退会する
+          <% end %>
+        </div>
+        <div class="user_box">
+          <p><%= @user.name %>さんをフォローする</p>　<!-- フォローしてるときしてない時で分岐 -->
+          <p><%= @user.name %>さんの大喜利一覧へ</p>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 offset-sm-1 mt-5">
+        <h5>最新の投稿</h5>
+        <% @user.articles.each do |article| %>
+          <div class="card">
+            <div class="card-header">
+              <%= article.area %> /
+              <%= article.category %> /
+              <%= link_to user_path(article.user) do %>
+                <%= article.user.name %>
+              <% end %>
+              /
+              <%= article.created_at.strftime('%Y-%m-%d') %>
+            </div>
+              <%= link_to article_path(article) do%>
+                <p class="text-left font-weight-bold"><%= article.title %></p>
+              <% end %>
+
+            <p>
+              <%= truncate(article.content, length: 50) %>
+            </p>
+            <p>
+              いいねと閲覧数をここに<!--いいねと閲覧数 -->
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @articles %>
+    </div>
+</div>
