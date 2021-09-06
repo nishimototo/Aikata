@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
- root "homes#top"
- resources :articles
+  root "homes#top"
+  resources :articles
+  resources :users, only: [:show, :edit, :update] do
+
+  end
 end
