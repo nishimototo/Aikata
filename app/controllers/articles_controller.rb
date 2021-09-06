@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.page(params[:page]).per(5)
+    @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
   end
 
   def show
