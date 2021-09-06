@@ -1,2 +1,32 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="container">
+  <div class="text-center">
+    <h5><%= @article.title %></h5>
+  </div>
+  <div class="card w-50 mx-auto mt-4">
+    <div class="card-header">
+      <%= @article.area %> /
+      <%= @article.category %> /
+      <%= link_to user_path(@article.user) do %>
+        <%= @article.user.name %>
+      <% end %>
+      /
+      <%= @article.created_at.strftime('%Y-%m-%d') %>
+    </div>
+        <p class="text-left font-weight-bold"><%= @article.title %></p>
+
+
+    <p>
+      <%= @article.content %>
+    </p>
+    <p>
+      いいねと閲覧数をここに<!--いいねと閲覧数 -->
+    </p>
+  </div>
+  <div class="text-center mt-3">
+    <p><i class="far fa-list-alt"></i><%= link_to "募集一覧に戻る", articles_path %></p>
+  <% if @article.user == current_user %>
+    <i class="fas fa-cog"></i><%= link_to "編集する", edit_article_path(@article) %> /
+    <i class="fas fa-trash-alt"></i><%= link_to "削除する", article_path(@article), data: {confirm: "本当に削除しますか？"}, method: :delete %>
+  <% end %>
+  </div>
+</div>

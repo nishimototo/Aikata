@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'homes/top'
-  get 'articles/index'
-  get 'articles/show'
-  get 'articles/new'
-  get 'articles/edit'
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -17,6 +12,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
- root "homes#top"
- resources :articles
+  root "homes#top"
+  resources :articles
+  resources :users, only: [:show, :edit, :update] do
+
+  end
 end
