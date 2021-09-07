@@ -4,6 +4,9 @@ class AnswersController < ApplicationController
   end
 
   def show
+    @theme = Theme.find(params[:theme_id])
+    @answer = Answer.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
