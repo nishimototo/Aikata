@@ -14,10 +14,15 @@ Rails.application.routes.draw do
 
   root "homes#top"
   resources :articles
+
   resources :users, only: [:show, :edit, :update] do
     member do
       get "unsubscribe" #退会画面
       patch "withdraw" #退会処理.is_deletedを更新
     end
+  end
+
+  resources :themes, only: [:index, :new, :create] do
+    resources :answers, except: [:edit, :update]
   end
 end

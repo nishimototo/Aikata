@@ -1,0 +1,47 @@
+/*回答投稿ページのお題部分 */
+.answer_theme_box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #b6195d;
+    background: #FFF;
+    border: solid 3px #b6195d;
+    border-radius: 10px;
+}
+
+.answer_theme_box p {
+    margin: 0;
+    padding: 0;
+}
+
+/* 回答一覧のお題*/
+
+.theme {
+    padding: 1.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #000;
+    background: #FFF;
+    border: solid 3px #5b5c76;
+    border-radius: 10px;
+}
+
+/* 回答一覧の回答部分の囲い */
+
+.answer_index {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 8px #000000;
+
+}
+
+.answer_index p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.answer_index span {
+    color: #f8eb65;
+}

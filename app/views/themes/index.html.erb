@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="text-center">
+    <h3>～大喜利～</h3>
+    <%= link_to "お題を投稿する", new_theme_path %> / 回答一覧
+    <h5>お題一覧</h5>
+    <% @themes.each do |theme| %>
+      <div class="theme_box">
+        <p>
+        <%= attachment_image_tag theme, :image, size: "100x100" %>
+        <%= theme.content %>
+        </p>
+      </div>
+      回答数：<%= link_to theme.answers.count, theme_answers_path(theme) %> /
+              <%= link_to "このお題に回答する", new_theme_answer_path(theme) %>
+    <% end %>
+    <%= paginate @themes %>
+  </div>
+</div>
