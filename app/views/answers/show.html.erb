@@ -8,26 +8,12 @@
     </div>
 
     <table class="table mt-5">
-      <tbody>
-        <% @answer.comments.each do |comment| %>
-          <tr>
-            <td><%= attachment_image_tag comment.user, :profile_image, size: "40x40" %></td>
-            <td><%= link_to comment.user.name, user_path(comment.user) %></td>
-            <td></td><!--星 -->
-            <td><%= comment.comment %></td>
-            <td>
-              <% if comment.user == current_user %>
-                <%= link_to theme_answer_comment_path(comment.answer.theme, comment.answer, comment), method: :delete do  %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+      <tbody id="answer_comment">
+        <%= render "comments/comment", answer: @answer %>
       </tbody>
     </table>
 
-    <%= form_with model: [@theme, @answer, @comment], local: true do |f| %>
+    <%= form_with model: [@theme, @answer, @comment] do |f| %>
       <div class="form-group mt-5">
         <%= f.text_area :comment, rows:"3", class: "form-control" %>
         <%= f.submit "コメント", class: "btn btn-secondary offset-5 mt-3" %>
