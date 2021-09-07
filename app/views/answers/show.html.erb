@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="text-center">
+    <h5>~ <%= @theme.content %> ~</h5>
+  </div>
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+    <div class="answer_index">
+      <p><%= @answer.content %></p>
+    </div>
+
+    <table class="table mt-5">
+      <tbody id="answer_comment">
+        <%= render "comments/comment", answer: @answer %>
+      </tbody>
+    </table>
+
+    <%= form_with model: [@theme, @answer, @comment] do |f| %>
+      <div class="form-group mt-5">
+        <%= f.text_area :comment, rows:"3", class: "form-control" %>
+        <%= f.submit "コメント", class: "btn btn-secondary offset-5 mt-3" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

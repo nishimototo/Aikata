@@ -1,0 +1,15 @@
+<% answer.comments.each do |comment| %>
+  <tr>
+    <td><%= attachment_image_tag comment.user, :profile_image, size: "40x40" %></td>
+    <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+    <td></td><!--星 -->
+    <td><%= comment.comment %></td>
+    <td>
+      <% if comment.user == current_user %>
+        <%= link_to theme_answer_comment_path(theme_id: comment.answer.theme.id, answer_id: comment.answer.id, id: comment.id), method: :delete, remote: true do  %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

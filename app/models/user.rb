@@ -10,8 +10,12 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :articles, dependent: :destroy
-  
+  has_many :themes, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+
   def active_for_authentication?
-    super && (self.is_deleted == false)  #
+    super && (self.is_deleted == false)
   end
 end
