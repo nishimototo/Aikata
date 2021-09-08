@@ -8,7 +8,10 @@
           <%= link_to theme_answer_path(answer.theme, answer) do %>
             <p><%= answer.content %></p>
           <% end %>
-          <span><i class="fas fa-star"></i></span>
+          <div>
+            <span><i class="fas fa-star"></i></span>
+            <small class="offset-9"><%= link_to answer.user.name, user_path(answer.user) %></small>
+          </div>
         </div>
       <% end %>
   </div>

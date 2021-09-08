@@ -1,0 +1,3 @@
+$('#follow').html("<%= j(render "relationships/relation", user: @user) %>")
+$('.follow_count').html("フォロー： <%= @user.active_relationships.count %>")
+$('.follower_count').html("フォロワー： <%= @user.passive_relationships.count %>")

@@ -7,16 +7,28 @@
     <div class="row">
       <div class="col-sm-4 mt-5">
         <div class="user_box">
-          <p><i class="fas fa-users"></i> フォロー：</p>
-          <p><i class="fas fa-users"></i> フォロワー：</p>
+          <p>
+            <%= link_to follows_user_path(@user) do %>
+              <i class="fas fa-users"></i> <span class="follow_count">フォロー： <%= @user.active_relationships.count %></span>
+            <% end %>
+          </p>
+          <p>
+            <%= link_to followers_user_path(@user) do %>
+              <i class="fas fa-users"></i> <span class="follower_count">フォロワー： <%= @user.passive_relationships.count %></span>
+            <% end %>
+          </p>
           <% if @user == current_user %>
              <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
             <i class="fas fa-hand-spock"></i> <%= link_to "退会する", unsubscribe_user_path(@user) %>
           <% end %>
         </div>
         <div class="user_box">
-          <p><%= @user.name %>さんをフォローする</p>　<!-- フォローしてるときしてない時で分岐 -->
-          <p><%= @user.name %>さんの大喜利一覧へ</p>
+          <div id="follow"><%= render "relationships/relation", user: @user %></div>
+          <p>
+            <%= link_to my_answer_user_path(@user) do %>
+              <%= @user.name %>さんの大喜利一覧へ
+            <% end %>
+          </p>
         </div>
       </div>
 
@@ -42,7 +54,8 @@
               <%= truncate(article.content, length: 50) %>
             </p>
             <p>
-              いいねと閲覧数をここに<!--いいねと閲覧数 -->
+              <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
+              <i class="far fa-eye"></i> <%= article.impressionist_count %>
             </p>
           </div>
         <% end %>

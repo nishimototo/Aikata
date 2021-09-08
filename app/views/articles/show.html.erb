@@ -19,7 +19,8 @@
       <%= @article.content %>
     </p>
     <p>
-      いいねと閲覧数をここに<!--いいねと閲覧数 -->
+      <span id="favorite_btn_<%= @article.id %>"><%= render "favorites/favorite", article: @article %></span>
+      <i class="far fa-eye"></i> <%= @article.impressionist_count %>
     </p>
   </div>
   <div class="text-center mt-3">

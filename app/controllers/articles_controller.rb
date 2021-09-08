@@ -1,12 +1,15 @@
 class ArticlesController < ApplicationController
+  impressionist :actions=> [:show], unique: [:ip_address]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
+
   end
 
   def show
     @article = Article.find(params[:id])
+    impressionist(@article, nil, unique: [:ip_address])
   end
 
   def new
