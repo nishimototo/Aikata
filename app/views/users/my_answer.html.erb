@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="text-center">
+    <h3>～<%= @user.name %> さんの大喜利～</h3>
+    <% @answers.each do |answer| %>
+      <div class="theme_box">
+        <p>
+          <%= answer.theme.content %>
+        </p>
+      </div>
+      <p class="font-weight-bold"><%= answer.content %></p>
+      <small><%= link_to "このお題に回答する", new_theme_answer_path(answer.theme) %></small>
+    <% end %>
+
+  </div>
+</div>

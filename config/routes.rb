@@ -13,15 +13,19 @@ Rails.application.routes.draw do
   }
 
   root "homes#top"
-  
+
   resources :articles do
     resource :favorites, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
     member do
       get "unsubscribe" #退会画面
       patch "withdraw" #退会処理.is_deletedを更新
+      get "follows"
+      get "followers"
+      get "my_answer"
     end
   end
 
