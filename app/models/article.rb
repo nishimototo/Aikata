@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  is_impressionable
+
   validates :title, presence: true
   validates :content, presence: true
 

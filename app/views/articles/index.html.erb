@@ -23,8 +23,7 @@
         </p>
         <p>
           <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
-          閲覧数
-          <!--いいねと閲覧数 -->
+          <i class="far fa-eye"></i> <%= article.impressionist_count %>
         </p>
       </div>
     <% end %>

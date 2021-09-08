@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  impressionist :actions=> [:show], unique: [:ip_address]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -8,7 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @user = @article.user
+    impressionist(@article, nil, unique: [:ip_address])
   end
 
   def new
