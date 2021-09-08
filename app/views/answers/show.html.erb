@@ -1,11 +1,20 @@
-<div class="container">
+<div class="container mt-5">
   <div class="text-center">
     <h5>~ <%= @theme.content %> ~</h5>
   </div>
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
     <div class="answer_index">
       <p><%= @answer.content %></p>
+      <span><i class="fas fa-star"></i></span>
     </div>
+
+
+    <%= form_with model: [@theme, @answer, @comment], local: true do |f| %>
+      <div id="star" class="offset-4 mt-5">
+        <%= f.hidden_field :rate %>
+      </div>
+      <%= f.submit "評価をつける", class: " btn offset-4" %>
+    <% end %>
 
     <table class="table mt-5">
       <tbody id="answer_comment">
@@ -22,3 +31,10 @@
 
   </div>
 </div>
+<script>
+  $('#star').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'comment[rate]'
+    });
+</script>

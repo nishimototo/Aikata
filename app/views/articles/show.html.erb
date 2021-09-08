@@ -19,7 +19,9 @@
       <%= @article.content %>
     </p>
     <p>
-      いいねと閲覧数をここに<!--いいねと閲覧数 -->
+      <span id="favorite_btn_<%= @article.id %>"><%= render "favorites/favorite", article: @article %></span>
+      <!-- 閲覧数ここに -->
+
     </p>
   </div>
   <div class="text-center mt-3">

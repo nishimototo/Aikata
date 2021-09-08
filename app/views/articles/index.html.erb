@@ -22,7 +22,9 @@
           <%= truncate(article.content, length: 50) %>
         </p>
         <p>
-          いいねと閲覧数をここに<!--いいねと閲覧数 -->
+          <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
+          閲覧数
+          <!--いいねと閲覧数 -->
         </p>
       </div>
     <% end %>

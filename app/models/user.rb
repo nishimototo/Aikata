@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :themes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
 
   def active_for_authentication?
     super && (self.is_deleted == false)

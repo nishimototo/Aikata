@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   }
 
   root "homes#top"
-  resources :articles
+  
+  resources :articles do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   resources :users, only: [:show, :edit, :update] do
     member do
