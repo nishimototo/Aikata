@@ -9,14 +9,15 @@
     </div>
 
 
-        <% if @answer.rated_by?(current_user) %>
-          <%= form_with model: [@theme, @answer, @rate], local: true do |f| %>
-            <div id="star" class="offset-4 mt-5">
-              <%= f.hidden_field :rate %>
-            </div>
-              <%= f.submit "評価をつける", class: " btn offset-4" %><!--一度評価したら評価送信できないように -->
-          <% end %>
-        <% end %>
+    <% unless @answer.rated_by?(current_user) %>   <!--一度評価したら評価送信できないように -->
+      <%= form_with model: [@theme, @answer, @rate], local: true do |f| %>
+        <div id="star" class="offset-4 mt-5">
+          <%= f.hidden_field :rate %>
+        </div>
+          <%= f.submit "評価をつける", class: " btn offset-4" %>
+      <% end %>
+    <% end %>
+
     <table class="table mt-5">
       <tbody id="answer_comment">
         <%= render "comments/comment", answer: @answer %>
