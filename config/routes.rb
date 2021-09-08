@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   resources :themes, only: [:index, :new, :create] do
     resources :answers, except: [:edit, :update] do
+      resources :rates, only: [:create]
       resources :comments, only: [:create, :destroy]
     end
   end

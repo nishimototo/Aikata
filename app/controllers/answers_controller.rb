@@ -7,6 +7,7 @@ class AnswersController < ApplicationController
     @theme = Theme.find(params[:theme_id])
     @answer = Answer.find(params[:id])
     @comment = Comment.new
+    @rate = Rate.new
   end
 
   def new

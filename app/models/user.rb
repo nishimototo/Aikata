@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :themes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :rates, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
