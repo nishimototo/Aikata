@@ -9,7 +9,7 @@
             <p><%= answer.content %></p>
           <% end %>
           <div>
-            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span><%= answer.rates.sum(:rate).round %>
             <small class="offset-9"><%= link_to answer.user.name, user_path(answer.user) %></small>
           </div>
         </div>

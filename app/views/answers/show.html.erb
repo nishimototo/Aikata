@@ -5,7 +5,7 @@
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
     <div class="answer_index">
       <p><%= @answer.content %></p>
-      <span><i class="fas fa-star"></i></span><%= @all_rate %><!-- これだと評価した回数が出てしまうはず -->
+      <span><i class="fas fa-star"></i></span><%= @all_rate %>
     </div>
 
     <% if user_signed_in? %>
