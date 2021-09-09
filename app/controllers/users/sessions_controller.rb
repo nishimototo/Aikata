@@ -39,4 +39,8 @@ class Users::SessionsController < Devise::SessionsController
       flash[:alert] = "必須項目を入力してください"
     end
   end
+
+ def after_sign_out_path_for(resource)
+    root_path
+ end
 end

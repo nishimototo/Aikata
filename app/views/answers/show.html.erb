@@ -5,16 +5,17 @@
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
     <div class="answer_index">
       <p><%= @answer.content %></p>
-      <span><i class="fas fa-star"></i></span><%= @answer.rates.count %><!-- これだと評価した回数が出てしまうはず -->
+      <span><i class="fas fa-star"></i></span><%= @all_rate %><!-- これだと評価した回数が出てしまうはず -->
     </div>
 
-
-    <% unless @answer.rated_by?(current_user) %>   <!--一度評価したら評価送信できないように -->
-      <%= form_with model: [@theme, @answer, @rate], local: true do |f| %>
-        <div id="star" class="offset-4 mt-5">
-          <%= f.hidden_field :rate %>
-        </div>
+    <% if user_signed_in? %>
+      <% unless @answer.rated_by?(current_user) %>   <!--一度評価したら評価送信できないように -->
+        <%= form_with model: [@theme, @answer, @rate], local: true do |f| %>
+          <div id="star" class="offset-4 mt-5">
+            <%= f.hidden_field :rate %>
+          </div>
           <%= f.submit "評価をつける", class: " btn offset-4" %>
+        <% end %>
       <% end %>
     <% end %>
 
@@ -38,6 +39,7 @@
     　number: 3,
       starOn: "<%= asset_path('star-on.png') %>",
       starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'comment[rate]'
+      scoreName: 'rate[rate]',
+      hints: ["やや面白い", "面白い", "とても面白い"]
     });
 </script>
