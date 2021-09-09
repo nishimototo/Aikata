@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'searches/search'
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   }
 
   root "homes#top"
+  get "search" => "searches#search"
 
   resources :articles do
     resource :favorites, only: [:create, :destroy]
