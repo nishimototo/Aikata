@@ -1,5 +1,36 @@
-<% if user_signed_in? %>
-  <%= link_to "ログアウトする", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "ログインする", new_user_session_path %>
-<% end %>
+<div id="main_visual">
+  <h1>Aikata</h1>
+</div>
+<div class="text-center mt-5">
+  <h5>エリアとジャンルで探す</h5>
+
+</div>
+<div class="row">
+  <div class="col-sm-3 offset-sm-1 mt-5">
+    <span>大喜利ランキング</span>
+  </div>
+  <div class="col-sm-6 offset-sm-1 mt-5">
+    <h5>新着の投稿</h5>
+    <% @articles.each do |article| %>
+      <div class="card">
+        <div class="card-header">
+          <%= article.area %> /
+          <%= article.category %> /
+          <%= link_to article.user.name, user_path(article.user) %> /
+          <%= article.created_at.strftime('%Y-%m-%d') %>
+        </div>
+          <%= link_to article_path(article) do%>
+            <p class="text-left font-weight-bold"><%= article.title %></p>
+          <% end %>
+
+        <p>
+          <%= truncate(article.content, length: 50) %>
+        </p>
+        <p>
+          <i class="far fa-eye"></i> <%= article.impressionist_count %>
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+</div>

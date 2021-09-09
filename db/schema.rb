@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_042947) do
+ActiveRecord::Schema.define(version: 2021_09_08_135339) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_09_08_042947) do
     t.integer "user_id"
     t.integer "answer_id"
     t.text "comment"
-    t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,6 +81,14 @@ ActiveRecord::Schema.define(version: 2021_09_08_042947) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "answer_id"
+    t.float "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

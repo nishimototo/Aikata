@@ -18,12 +18,61 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
+
 a {
   text-decoration: none;
   color: black;
 }
 
+body {
 
-/*背景画像 */
+
+}
 
 
+
+
+/*ヘッダー背景色 */
+.navbar {
+ background-color: #bdc6b7;
+}
+/* ヘッダー日本語フォント */
+.navbar-nav {
+ font-family: 'Kaisei HarunoUmi', serif;
+}
+
+/* ヘッダーの文字調整 */
+.nav-link {
+  display: inline-block;
+	padding: 0.3em;
+	transition: .3s;
+	transform: scale(1);
+	color: #F4511E;
+}
+
+.nav-link:hover {
+  transform: scale(1.2);
+}
+
+/* ヘッダーロゴ*/
+.header_logo {
+ font-family: 'Philosopher', sans-serif;
+ font-size: 1.2rem;
+ color: #196989;
+}
+
+
+/*ページ背景 */
+
+.bg {
+
+}
+
+
+/* 募集系のカード*/
+
+.card-header {
+
+}

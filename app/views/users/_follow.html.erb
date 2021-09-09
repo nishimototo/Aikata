@@ -1,0 +1,18 @@
+<% if users.present? %>
+  <div>
+    <table class="table table-hover table-inverse">
+      <tbody>
+        <% users.each do |user| %>
+          <tr>
+            <td><%= attachment_image_tag user, :profile_image, size: "40x40" %></td>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td>フォロー数: <%= user.active_relationships.count %></td>
+            <td>フォロワー数: <%= user.passive_relationships.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  ユーザーはいません
+<% end %>

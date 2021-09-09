@@ -1,6 +1,5 @@
 <div class="container">
   <div class="text-center">
-    <h3 class="mt-5">全ての投稿</h3>
     <h5>エリアとジャンルで探す</h5>
 
     <%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -34,7 +33,7 @@
         </p>
       </div>
     <% end %>
-
     <%= paginate @articles %>
+
   </div>
 </div>
