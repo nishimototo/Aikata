@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   root "homes#top"
   get "search" => "searches#search"
 
+  namespace :admins do
+    resources :users, only: [:index, :edit, :update]
+  end
+
   resources :articles do
     resource :favorites, only: [:create, :destroy]
   end
