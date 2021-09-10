@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :rates, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :article_comments, dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: :visitor_id, dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: :visited_id, dependent: :destroy
 
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
@@ -30,4 +32,14 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.where(following_id: user.id).exists?
   end
+
+  #フォロー通知
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? AND visited_id = ? AND action = ? ", current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
+      notification.save if notification.valid?
+    end
+  end
+
 end
