@@ -4,11 +4,12 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
-    
+
   end
 
   def show
     @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
     impressionist(@article, nil, unique: [:ip_address])
   end
 

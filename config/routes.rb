@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'searches/search'
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resource :favorites, only: [:create, :destroy]
+    resources :article_comments, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update] do
