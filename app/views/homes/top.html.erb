@@ -3,16 +3,20 @@
 </div>
 <div class="text-center mt-5">
   <h5>エリアとジャンルで探す</h5>
-
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.select :area, options_for_select([["関東エリア"], ["近畿エリア"], ["中部エリア"], ["九州エリア"], ["東北エリア"], ["中国エリア"], ["北海道エリア"], ["四国エリア"]]), prompt: "エリアを選択してください" %>
-    <%= f.select :category, options_for_select([["相方募集"], ["友人募集"], ["告知"]]), prompt: "カテゴリーを選択してください" %>
-    <%= f.submit "検索" %>
-  <% end %>
+  <div class="mt-5">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.select :area, options_for_select([["関東エリア"], ["近畿エリア"], ["中部エリア"], ["九州エリア"], ["東北エリア"], ["中国エリア"], ["北海道エリア"], ["四国エリア"]]), prompt: "エリアを選択してください" %>
+      <i class="fas fa-times"></i>
+      <%= f.select :category, options_for_select([["相方募集"], ["友人募集"], ["告知"]]), prompt: "カテゴリーを選択してください" %>
+       <button type="submit" name="commit" value="検索" id="search-btn">
+        <i class="fas fa-search"></i>
+       </button>
+    <% end %>
+  </div>
 </div>
 <div class="row">
   <div class="col-sm-3 offset-sm-1 mt-5">
-    <h5 class="offset-sm-1">大喜利ランキング</h5>
+    <h5><i class="fas fa-crown"></i> 大喜利ランキング <i class="fas fa-crown"></i></h5>
     <table class="table rate_ranking">
       <tbody>
         <% @users.each do |user| %>
