@@ -6,15 +6,18 @@
     <div class="answer_index">
       <p><%= @answer.content %></p>
       <span><i class="fas fa-star"></i></span><%= @all_rate %>
+      <small class="offset-9"><%= link_to @answer.user.name, user_path(@answer.user) %></small>
     </div>
 
     <% if user_signed_in? %>
       <% unless @answer.rated_by?(current_user) %>   <!--一度評価したら評価送信できないように -->
         <%= form_with model: [@theme, @answer, @rate], local: true do |f| %>
-          <div id="star" class="offset-4 mt-5">
-            <%= f.hidden_field :rate %>
+          <div class="text-center">
+            <div id="star" class="mt-5">
+              <%= f.hidden_field :rate %>
+            </div>
+            <%= f.submit "評価をつける", class: "btn" %>
           </div>
-          <%= f.submit "評価をつける", class: " btn offset-4" %>
         <% end %>
       <% end %>
     <% end %>
@@ -35,6 +38,7 @@
   </div>
 </div>
 <script>
+  $('#star').empty(); 　/*ブラウザバック時星の数が増えないように */
   $('#star').raty({
     　number: 3,
       starOn: "<%= asset_path('star-on.png') %>",

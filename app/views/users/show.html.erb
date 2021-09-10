@@ -34,9 +34,9 @@
 
 
       <div class="col-sm-6 offset-sm-1 mt-5">
-        <h5>最新の投稿</h5>
+        <h5 class="text-center">最新の投稿</h5>
         <% @user.articles.each do |article| %>
-          <div class="card">
+          <div class="card mb-4">
             <div class="card-header">
               <%= article.area %> /
               <%= article.category %> /

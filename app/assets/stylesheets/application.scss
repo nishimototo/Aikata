@@ -67,12 +67,32 @@ body {
 /*ページ背景 */
 
 .bg {
+  background-image: image-url("");
+  background-size: cover;
+  background-repeat: no-repeat;
 
 }
 
 
-/* 募集系のカード*/
+/* 募集系のカードヘッダー*/
 
 .card-header {
+  background-color: #bdc6b7;
+}
 
+/* 募集系のカード外枠*/
+.card {
+  border: 8px double black;
+}
+
+/*検索フォーム */
+
+.select-form {
+
+}
+
+/*検索ボタン */
+
+#search-btn {
+  color: #70769d;
 }
