@@ -67,6 +67,9 @@ body {
 /*ページ背景 */
 
 .bg {
+  background-image: image-url("");
+  background-size: cover;
+  background-repeat: no-repeat;
 
 }
 
@@ -74,5 +77,5 @@ body {
 /* 募集系のカード*/
 
 .card-header {
-
+  background-color: #bdc6b7;
 }

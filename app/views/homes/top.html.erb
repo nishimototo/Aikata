@@ -4,15 +4,34 @@
 <div class="text-center mt-5">
   <h5>エリアとジャンルで探す</h5>
 
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.select :area, options_for_select([["関東エリア"], ["近畿エリア"], ["中部エリア"], ["九州エリア"], ["東北エリア"], ["中国エリア"], ["北海道エリア"], ["四国エリア"]]), prompt: "エリアを選択してください" %>
+    <%= f.select :category, options_for_select([["相方募集"], ["友人募集"], ["告知"]]), prompt: "カテゴリーを選択してください" %>
+    <%= f.submit "検索" %>
+  <% end %>
 </div>
 <div class="row">
   <div class="col-sm-3 offset-sm-1 mt-5">
-    <span>大喜利ランキング</span>
+    <h5 class="offset-sm-1">大喜利ランキング</h5>
+    <table class="table rate_ranking">
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td>
+              <%= link_to my_answer_user_path(user) do %>
+                <i class="fas fa-star"></i><%= user.rates.sum(:rate).round %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <div class="col-sm-6 offset-sm-1 mt-5">
-    <h5>新着の投稿</h5>
+    <h5 class="text-center">新着の投稿</h5>
     <% @articles.each do |article| %>
-      <div class="card">
+      <div class="card mb-4">
         <div class="card-header">
           <%= article.area %> /
           <%= article.category %> /
