@@ -1,0 +1,14 @@
+<% article.article_comments.each do |article_comment| %>
+  <tr>
+    <td><%= attachment_image_tag article_comment.user, :profile_image, size: "40x40" %></td>
+    <td><%= link_to article_comment.user.name, user_path(article_comment.user) %></td>
+    <td><%= article_comment.comment %></td>
+    <td>
+      <% if article_comment.user == current_user %>
+        <%= link_to article_article_comment_path(article_id: article_comment.article.id, id: article_comment.id), method: :delete, remote: true do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
