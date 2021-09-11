@@ -15,10 +15,10 @@ class Article < ApplicationRecord
 
   #いいね通知
   def create_notification_favorite!(current_user)
-    temp = Notification.where(["visitor_id = ? AND visited_id = ? AND article_id = ? AND action = ? ", current_user.id, user_id, id, 'favorite'])
+    temp = Notification.where(["visitor_id = ? AND visited_id = ? AND article_id = ? AND action = ? ", current_user.id, user_id, id, 'favorite']) #既にいいねされているかの分岐用
     if temp.blank?
       notification = current_user.active_notifications.new(article_id: id, visited_id: user_id, action: 'favorite')
-      if notification.visitor_id == notification.visited_id
+      if notification.visitor_id == notification.visited_id #自分で自分の記事にいいねするときは通知済に
         notification.checked = true
       end
 
@@ -28,7 +28,7 @@ class Article < ApplicationRecord
 
   #コメント通知
   def create_notification_comment!(current_user, comment_id)
-    temp_ids = ArticleComment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids = ArticleComment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct #コメントしている人のuser_idを取得（自分がコメントした分は除く）
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
