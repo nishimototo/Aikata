@@ -1,0 +1,7 @@
+<div class="container">
+  <% if @notifications.present? %>
+    <%= render @notifications %>
+  <% else %>
+   <p>未読の通知はありません</p>
+  <% end %>
+</div>

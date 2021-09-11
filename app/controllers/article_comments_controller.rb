@@ -4,7 +4,7 @@ class ArticleCommentsController < ApplicationController
     @article_comment = current_user.article_comments.new(article_comment_params)
     @article_comment.article_id = @article.id
     if @article_comment.save
-
+      @article.create_notification_comment!(current_user, @article_comment.id) #コメントしたら通知を作成。article.rbで定義
     else
       render "articles/show"
     end
