@@ -1,2 +1,32 @@
-<h1>Chats#show</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
+
+  <h2 class="text-center mt-3"><%= @user.name %>さんとのチャット</h2>
+  <div class="message">
+    <% @chats.each do |chat|%>
+      <% if chat.user == current_user %>
+        <div class="my_message">
+          <p class="my_message_form"><%= chat.message %></p>
+        </div>
+      <%else%>
+        <div class="balloon">
+          <div>
+            <div class="faceicon">
+              <%= attachment_image_tag @user, :profile_image %>
+            </div>
+          </div>
+          <div class="chatting">
+            <div class="partner_message">
+              <p><%= chat.message %></p>
+            </div>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+</div>
+<div class="text-center">
+  <%= form_with model: @chat do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "送信", class: "btn" %>
+  <% end %>
+</div>
+
