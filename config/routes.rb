@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   root "homes#top"
   get "search" => "searches#search"
+  get "chat/:id" => "chats#show", as: "chat"
 
   namespace :admins do
     resources :users, only: [:index, :edit, :update]
@@ -43,4 +44,5 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: [:index]
+  resources :chats, only: [:create]
 end
