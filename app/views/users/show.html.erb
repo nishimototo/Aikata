@@ -19,9 +19,10 @@
           </p>
           <p>
             <% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
+              <span class="unchecked"><i class="fas fa-flag-checkered"></i></span> <%= link_to "未読の通知があります", notifications_path %>
+            <% else %>
+              <span class="checked"><i class="fas fa-flag-checkered"></i></span> <%= link_to "未読の通知はありません", notifications_path %>
             <% end %>
-            <li><%= link_to "NOTICE", notifications_path, class: "btn-default" %></li>
           </p>
           <% if @user == current_user %>
              <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
