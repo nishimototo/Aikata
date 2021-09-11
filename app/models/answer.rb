@@ -1,0 +1,11 @@
+class Answer < ApplicationRecord
+
+  belongs_to :user
+  belongs_to :theme
+  has_many :comments
+  has_many :rates
+
+  def rated_by?(user)
+    rates.find_by(user_id: user.id).present?
+  end
+end

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="text-center">
+    <h5 class="theme"><%= @theme.content %></h5>
+  </div>
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+      <% @theme.answers.each do |answer| %>
+        <div class="answer_index">
+          <%= link_to theme_answer_path(answer.theme, answer) do %>
+            <p><%= answer.content %></p>
+          <% end %>
+          <div>
+            <span><i class="fas fa-star"></i></span><%= answer.rates.sum(:rate).round %>
+            <small class="offset-9"><%= link_to answer.user.name, user_path(answer.user) %></small>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <small><%= link_to "このお題に回答する", new_theme_answer_path(@theme) %></small>
+</div>

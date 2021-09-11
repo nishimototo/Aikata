@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="text-center">
+      <h3 class="mt-3"><%= @user.name %>さんのマイページ</h3>
+      <h5 class="mt-3">~自己紹介~</h5>
+      <%= @user.introduction %>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 mt-5">
+        <div class="user_box">
+          <p>
+            <%= link_to follows_user_path(@user) do %>
+              <i class="fas fa-users"></i> <span class="follow_count">フォロー： <%= @user.active_relationships.count %></span>
+            <% end %>
+          </p>
+          <p>
+            <%= link_to followers_user_path(@user) do %>
+              <i class="fas fa-users"></i> <span class="follower_count">フォロワー： <%= @user.passive_relationships.count %></span>
+            <% end %>
+          </p>
+          <p>
+            <% if current_user != @user && current_user.followed_by?(@user) && @user.followed_by?(current_user) %>
+              <%= link_to "チャットする", chat_path(@user) %>
+            <% end %>
+          </p>
+          <p>
+            <% if unchecked_notifications.any? %>
+              <span class="unchecked"><i class="fas fa-flag-checkered"></i></span> <%= link_to "未読の通知があります", notifications_path %>
+            <% else %>
+              <span class="checked"><i class="fas fa-flag-checkered"></i></span> <%= link_to "未読の通知はありません", notifications_path %>
+            <% end %>
+          </p>
+          <% if @user == current_user %>
+             <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
+            <i class="fas fa-hand-spock"></i> <%= link_to "退会する", unsubscribe_user_path(@user) %>
+          <% end %>
+        </div>
+        <div class="user_box">
+          <div id="follow"><%= render "relationships/relation", user: @user %></div>
+          <p>
+            <%= link_to my_answer_user_path(@user) do %>
+              <i class="fas fa-grin-alt"></i> <%= @user.name %>さんの大喜利一覧へ
+            <% end %>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 offset-sm-1 mt-5">
+        <h5 class="text-center">最新の投稿</h5>
+        <% @user.articles.each do |article| %>
+          <div class="card mb-4">
+            <div class="card-header">
+              <%= article.area %> /
+              <%= article.category %> /
+              <%= article.user.name %> /
+              <%= article.created_at.strftime('%Y-%m-%d') %>
+            </div>
+              <%= link_to article_path(article) do%>
+                <p class="text-left font-weight-bold"><%= article.title %></p>
+              <% end %>
+
+            <p>
+              <%= truncate(article.content, length: 50) %>
+            </p>
+            <p>
+              <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
+              <i class="far fa-eye"></i> <%= article.impressionist_count %>
+            </p>
+          </div>
+        <% end %>
+        <%= paginate @articles %>
+      </div>
+
+    </div>
+</div>

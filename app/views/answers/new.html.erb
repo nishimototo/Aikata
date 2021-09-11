@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+    <div class="answer_theme_box">
+      <p>
+        <%= @theme.image %>
+        <%= @theme.content %>
+      </p>
+    </div>
+    <%= form_with model: [@theme, @answer], local: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, rows: "5", class: "form-control" %>
+        <%= f.submit "回答する", class: "btn btn-secondary offset-4 mt-3" %>
+      </div>
+    <% end %>
+  </div>
+</div>

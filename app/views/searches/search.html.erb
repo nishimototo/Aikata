@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="text-center">
+    <h5>エリアとジャンルで探す</h5>
+
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.select :area, options_for_select([["関東エリア"], ["近畿エリア"], ["中部エリア"], ["九州エリア"], ["東北エリア"], ["中国エリア"], ["北海道エリア"], ["四国エリア"]]), prompt: "エリアを選択してください" %>
+      <i class="fas fa-times"></i>
+      <%= f.select :category, options_for_select([["相方募集"], ["友人募集"], ["告知"]]), prompt: "カテゴリーを選択してください" %>
+      <button type="submit" name="commit" value="検索" id="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    <% end %>
+
+    <h5><i class="fas fa-pencil-alt"></i><%= link_to "自分で募集する", new_article_path, class:"link" %></h5>
+    <% @articles.each do |article| %>
+      <div class="card w-50 mx-auto mt-4">
+        <div class="card-header">
+          <%= article.area %> /
+          <%= article.category %> /
+          <%= link_to user_path(article.user) do %>
+            <%= article.user.name %>
+          <% end %>
+          /
+          <%= article.created_at.strftime('%Y-%m-%d') %>
+        </div>
+          <%= link_to article_path(article) do%>
+            <p class="text-left font-weight-bold"><%= article.title %></p>
+          <% end %>
+
+        <p>
+          <%= truncate(article.content, length: 50) %>
+        </p>
+        <p>
+          <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
+          <i class="far fa-eye"></i> <%= article.impressionist_count %>
+        </p>
+      </div>
+    <% end %>
+    <%= paginate @articles %>
+
+  </div>
+</div>

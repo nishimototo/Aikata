@@ -1,0 +1,47 @@
+/*ホーム画面、画像*/
+
+#main_visual {
+  width: 100%;
+  min-height: 100vh;
+  background-image: image-url("main_visual.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding: 20px 40px;
+  position: relative;
+}
+
+#main_visual h1 {
+  padding: 0 16px;
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  right: 0;
+  color: #fff;
+  font-size: 7rem;
+  font-family: 'Caveat', cursive;
+}
+
+
+/*大喜利ランキングの星の色 */
+.rate_ranking i {
+  color: #f8eb65;
+}
+
+/*大喜利ランキングの囲い */
+.rate_ranking {
+  border: 8px double black;
+}
+
+/*ランキング王冠 */
+
+.fa-crown {
+  color: #728742;
+}
+
+/*通知のフラグ */
+
+.unchecked {
+  color: #b6195d;
+}

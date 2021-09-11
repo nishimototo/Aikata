@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+    <h4>投稿内容の編集</h4>
+    <%= form_with model: @article, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :募集エリア %>
+        <%= f.select :area, [["関東エリア"], ["近畿エリア"], ["中部エリア"], ["九州エリア"], ["東北エリア"], ["中国エリア"], ["北海道エリア"], ["四国エリア"]], prompt: "エリアを選択してください", class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :カテゴリー %>
+        <%= f.select :category, [["相方募集"], ["友人募集"], ["告知"]], prompt: "カテゴリーを選択してください", class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :本文 %>
+        <%= f.text_area :content, rows:"7", class:"form-control" %>
+      </div>
+      <%= f.submit "編集する", class: "btn btn-secondary offset-4" %>
+    <% end %>
+  </div>
+</div>

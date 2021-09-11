@@ -1,0 +1,98 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+
+
+}
+
+
+
+
+/*ヘッダー背景色 */
+.navbar {
+ background-color: #bdc6b7;
+}
+/* ヘッダー日本語フォント */
+.navbar-nav {
+ font-family: 'Kaisei HarunoUmi', serif;
+}
+
+/* ヘッダーの文字調整 */
+.nav-link {
+  display: inline-block;
+	padding: 0.3em;
+	transition: .3s;
+	transform: scale(1);
+	color: #F4511E;
+}
+
+.nav-link:hover {
+  transform: scale(1.2);
+}
+
+/* ヘッダーロゴ*/
+.header_logo {
+ font-family: 'Philosopher', sans-serif;
+ font-size: 1.2rem;
+ color: #196989;
+}
+
+
+/*ページ背景 */
+
+.bg {
+  background-image: image-url("");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+
+/* 募集系のカードヘッダー*/
+
+.card-header {
+  background-color: #bdc6b7;
+}
+
+/* 募集系のカード外枠*/
+.card {
+  border: 8px double black;
+}
+
+/*検索フォーム */
+
+.select-form {
+
+}
+
+/*検索ボタン */
+
+#search-btn {
+  color: #70769d;
+}

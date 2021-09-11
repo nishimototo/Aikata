@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="col-sm-11 col-md-8 mx-auto mt-5 notice_box py-3 pl-5">
+      <% if @notifications.present? %>
+        <%= render @notifications %>
+      <% else %>
+       <p>未読の通知はありません</p>
+      <% end %>
+  </div>
+</div>
