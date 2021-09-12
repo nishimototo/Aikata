@@ -45,4 +45,12 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
   resources :chats, only: [:create]
+
+  resources :contacts, only: [:new, :create] do
+    collection do
+      post "confirm"
+      post "back"
+      get "thanks"
+    end
+  end
 end
