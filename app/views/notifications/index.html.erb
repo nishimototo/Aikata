@@ -1,9 +1,17 @@
 <div class="container">
+  <div class="mt-3">
+    <%= link_to destroy_all_notifications_path, method: :delete do %>
+      <i class="fas fa-trash-alt"></i> 通知を全て削除
+    <% end %>
+  </div>
   <div class="col-sm-11 col-md-8 mx-auto mt-5 notice_box py-3 pl-5">
       <% if @notifications.present? %>
-        <%= render @notifications %>
+        <% @notifications.each do |notification| %>
+          <%= render notification, notification: notification %>
+        <% end %>
+        <%= paginate @notifications %>
       <% else %>
-       <p>未読の通知はありません</p>
+       <p class="text-center">未読の通知はありません</p>
       <% end %>
   </div>
 </div>

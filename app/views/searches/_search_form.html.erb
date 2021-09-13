@@ -1,0 +1,8 @@
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= f.select :area, options_for_select([["関東エリア"], ["近畿エリア"], ["中部エリア"], ["九州エリア"], ["東北エリア"], ["中国エリア"], ["北海道エリア"], ["四国エリア"]]), prompt: "エリアを選択してください" %>
+  <i class="fas fa-times"></i>
+  <%= f.select :category, options_for_select([["相方募集"], ["友人募集"], ["告知"]]), prompt: "カテゴリーを選択してください" %>
+   <button type="submit" name="commit" value="検索" id="search-btn">
+    <i class="fas fa-search"></i>
+   </button>
+<% end %>

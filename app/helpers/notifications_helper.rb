@@ -1,15 +1,13 @@
 module NotificationsHelper
   def notification_form(notification)
     @visitor = notification.visitor
-    @comment = nil
-    #your_article = link_to "あなたの投稿", article_path(notification)+
+    #@comment = nil
     @visitor_comment = notification.comment_id
-    case notification.action
-      when "follow" then
+    if notification.action == "follow"
         tag.a(notification.visitor.name, href: user_path(@visitor))  + "さんがあなたをフォローしました"
-      when "favorite" then
+    elsif notification.action == "favorite"
         tag.a(notification.visitor.name, href: user_path(@visitor)) + "さんが" + tag.a('あなたの投稿', href: article_path(notification.article_id)) + "にいいねしました"
-      when "comment" then
+    elsif notification.action == "comment"
         @comment = ArticleComment.find_by(id: @visitor_comment)&.comment
         tag.a(@visitor.name, href: user_path(@visitor)) + "さんが" + tag.a('あなたの投稿', href: article_path(notification.article_id)) + "にコメントしました"
     end
