@@ -9,7 +9,7 @@
     <%= form_with model: [@theme, @answer], local: true do |f| %>
       <div class="form-group">
         <%= f.text_area :content, rows: "5", class: "form-control" %>
-        <%= f.submit "回答する", class: "btn btn-secondary offset-4 mt-3" %>
+        <%= f.submit "回答する", class: "offset-4 mt-3 btn_answer" %>
       </div>
     <% end %>
   </div>

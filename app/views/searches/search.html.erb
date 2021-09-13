@@ -5,31 +5,34 @@
       <%= render "searches/search_form" %>
     </div>
     <h5 class="sub-title mt-3"><%= params[:area] %>で<%= params[:category] %></h5>
-    <% @articles.each do |article| %>
-      <div class="card w-50 mx-auto mt-3">
-        <div class="card-header">
-          <%= article.area %> /
-          <%= article.category %> /
-          <%= link_to user_path(article.user) do %>
-            <%= article.user.name %>
-          <% end %>
-          /
-          <%= article.created_at.strftime('%Y-%m-%d') %>
+    <% if @articles.present? %>
+      <% @articles.each do |article| %>
+        <div class="card w-50 mx-auto mt-3">
+          <div class="card-header">
+            <%= article.area %> /
+            <%= article.category %> /
+            <%= link_to user_path(article.user) do %>
+              <%= article.user.name %>
+            <% end %>
+            /
+            <%= article.created_at.strftime('%Y-%m-%d') %>
+          </div>
+            <%= link_to article_path(article) do%>
+              <p class="text-left font-weight-bold"><%= article.title %></p>
+            <% end %>
+
+          <p>
+            <%= truncate(article.content, length: 50) %>
+          </p>
+          <p>
+            <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
+            <i class="far fa-eye"></i> <%= article.impressionist_count %>
+          </p>
         </div>
-          <%= link_to article_path(article) do%>
-            <p class="text-left font-weight-bold"><%= article.title %></p>
-          <% end %>
-
-        <p>
-          <%= truncate(article.content, length: 50) %>
-        </p>
-        <p>
-          <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
-          <i class="far fa-eye"></i> <%= article.impressionist_count %>
-        </p>
-      </div>
+      <% end %>
+      <%= paginate @articles %>
+    <% else %>
+      <p class="mt-5">該当する記事が見つかりませんでした</p>
     <% end %>
-    <%= paginate @articles %>
-
   </div>
 </div>

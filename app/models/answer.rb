@@ -1,4 +1,5 @@
 class Answer < ApplicationRecord
+  validates :content, presence: true, length: {maximum: 120}
 
   belongs_to :user
   belongs_to :theme
