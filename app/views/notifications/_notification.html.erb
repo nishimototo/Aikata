@@ -4,12 +4,13 @@
   <% end %>
   <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
 
-  <% if notification.action == "follow" %>
-    <%= あなたをフォローしました %>
-  <% elsif notification.action == "favorite"  %>
+  <% case notification.action %>
+  <% when "follow" %>
+    あなたをフォローしました
+  <% when "favorite" %>
     <%= link_to "あなたの投稿", article_path(notification.article) %>にいいねしました
-  <% elsif notification.action == "comment" %>
-    <% if notification.article.user_id == notification.visited.id %>
+  <% when "comment" %>
+    <% if notification.article.user_id == notification.visited.id %>　<!--visited.idから変えた -->
       <%= link_to "あなたの投稿", article_path(notification.article) %>
     <% else %>
       <%= link_to article_path(notification.article) do %>
@@ -20,7 +21,5 @@
   <% end %>
   <%= "(#{time_ago_in_words(notification.created_at)}前)" %>
   <br>
-  <% if @comment.present? %>
-    <p class="text-center text-muted"><%= @comment %></p>
-  <% end %>
+  <p class="text-muted text-center small"><%= ArticleComment.find_by(id: notification.article_comment_id)&.comment %></p>
 </div>
