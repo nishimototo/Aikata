@@ -36,8 +36,8 @@ class Article < ApplicationRecord
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
-    notification = current_user.active_notifications.new(article_id: id, comment_id: comment_id, visited_id: visited_id, action: 'comment')
-    if notification.visitor_id == notification.visited_id
+    notification = current_user.active_notifications.new(article_id: id, article_comment_id: comment_id, visited_id: visited_id, action: 'comment')
+    if notification.visitor_id == notification.visited_id #自分で自分の記事にコメントするときは通知済に
       notification.checked = true
     end
 

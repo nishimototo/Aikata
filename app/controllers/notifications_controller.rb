@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = current_user.passive_notifications.page(params[:page]).per(10)
+    @notifications = current_user.passive_notifications.where.not(visitor_id: current_user.id).page(params[:page]).per(10) #相手からの通知を取得。自身のものは除く
     @notifications.where(checked: false).each do |notification| #@notificationの中でまだ確認していない（indexページにアクセスしていない）通知だけを取り出して通知済にupdate
       notification.update(checked: true)
     end

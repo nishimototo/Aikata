@@ -2,7 +2,23 @@
   <%= link_to user_path(notification.visitor) do %>
     <%= attachment_image_tag notification.visitor, :profile_image, size: "30x30" %>
   <% end %>
-  <%= notification_form(notification) %><%= "(#{time_ago_in_words(notification.created_at)}前)" %>
+  <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+
+  <% if notification.action == "follow" %>
+    <%= あなたをフォローしました %>
+  <% elsif notification.action == "favorite"  %>
+    <%= link_to "あなたの投稿", article_path(notification.article) %>にいいねしました
+  <% elsif notification.action == "comment" %>
+    <% if notification.article.user_id == notification.visited.id %>
+      <%= link_to "あなたの投稿", article_path(notification.article) %>
+    <% else %>
+      <%= link_to article_path(notification.article) do %>
+        <%= notification.article.user.name %>さんの投稿
+      <% end %>
+    <% end %>
+    にコメントしました
+  <% end %>
+  <%= "(#{time_ago_in_words(notification.created_at)}前)" %>
   <br>
   <% if @comment.present? %>
     <p class="text-center text-muted"><%= @comment %></p>

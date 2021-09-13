@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_235031) do
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.integer "article_id"
-    t.integer "comment_id"
+    t.integer "article_comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false

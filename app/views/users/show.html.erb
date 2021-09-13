@@ -1,6 +1,6 @@
 <div class="container">
     <div class="text-center">
-      <h3 class="my_name mt-4"><%= @user.name %>さんのマイページ</h3>
+      <h3 class="my_name mt-5"><%= @user.name %>さんのマイページ</h3>
       <div class="introduction col-sm-11 col-md-8 col-lg-5 mx-auto mt-3">
         <p class="introduction_content"><%= @user.introduction %></p>
       </div>
@@ -24,7 +24,7 @@
             <% end %>
           </p>
           <p>
-            <% if unchecked_notifications.any? %>
+            <% if unchecked_notifications.any? %> <!-- notifications_helperから呼び出し -->
               <span class="unchecked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知があります", notifications_path %>
             <% else %>
               <span class="checked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知はありません", notifications_path %>
