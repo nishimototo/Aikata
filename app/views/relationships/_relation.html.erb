@@ -2,11 +2,11 @@
   <% if user != current_user %>
     <% if user.followed_by?(current_user) %>
       <%= link_to user_relationships_path(user), method: :delete, remote: true do %>
-        <%= user.name %>さんのフォローを外す
+        <i class="fas fa-handshake-alt-slash"></i> <%= user.name %>さんのフォローを外す
       <% end %>
     <% else %>
       <%= link_to user_relationships_path(user), method: :post, remote: true do %>
-        <%= user.name %>さんをフォローする
+        <i class="far fa-handshake"></i> <%= user.name %>さんをフォローする
       <% end %>
     <% end %>
   <% end %>

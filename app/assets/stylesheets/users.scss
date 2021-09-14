@@ -7,3 +7,66 @@
   margin-bottom: 10px;
   border: 8px double black;
 }
+
+/*通知のフラグ */
+
+.unchecked {
+  color: #9f385b;
+}
+
+.answer_link {
+  margin-left: 14px;
+}
+
+/*マイページ名前部分 */
+
+.my_name {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  padding: 0 40px;
+  font-size: 18px;
+  background: #d58d9d;
+  color: #FFF;
+  box-sizing: border-box;
+}
+
+.my_name:before, .my_name:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.my_name:before {
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.my_name:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+/*自己紹介部分 */
+
+.introduction {
+  font-size: 0.9rem;
+  text-align: center;
+  border: 4px double black;
+  border-radius: 0.7rem;
+}
+
+.introduction_content {
+  text-align: left;
+  padding-top: 10px;
+}

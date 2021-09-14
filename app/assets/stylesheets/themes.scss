@@ -15,3 +15,59 @@
     margin: 0;
     padding: 0;
 }
+
+/*「お題一覧の見出し」 */
+
+.theme_title {
+  display: inline-block;
+  position: relative;
+  height: 30px;/*リボンの高さ, line-heightと一緒に調節*/
+  line-height: 30px;
+  text-align: center;
+  padding: 0 60px;
+  font-size: 18px;
+  background: #1c315d;
+  color: #FFF;
+  box-sizing: border-box;
+}
+
+.theme_title:before, .theme_title:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.theme_title:before {
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.theme_title:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+
+/*お題投稿の見出し */
+
+.theme_new {
+    padding: 0.3em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #1c315d;
+    background: #FFF;
+    border: solid 3px #1c315d;
+    border-radius: 10px;
+}
+
+.theme_new_form {
+  text-align: center;
+}

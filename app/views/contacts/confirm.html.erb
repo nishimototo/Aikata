@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto mt-5">
+    <table>
+      <tbody>
+        <tr>
+          <td>お名前</td>
+          <td><%= @contact.name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @contact.email %></td>
+        </tr>
+        <tr>
+          <td>お問い合わせ内容</td>
+          <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :message %>
+      <div><%= f.submit "送信" %></div>
+    <% end %>
+
+    <%= form_with model: @contact, url: back_contacts_path, local: true do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :message %>
+      <div><%= f.submit "入力画面に戻る" %></div>
+    <% end %>
+  </div>
+</div>

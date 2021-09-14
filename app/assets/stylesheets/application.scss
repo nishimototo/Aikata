@@ -96,3 +96,105 @@ body {
 #search-btn {
   color: #70769d;
 }
+
+/*エリアとジャンルで探す,大喜利見出し*/
+
+.title_search {
+  position: relative;
+  font-size: 20px;
+  padding: 10px 0;
+  text-align: center;
+  margin: 1.5em 0;
+}
+.title_search:before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 150px;
+  height: 58px;
+  border-radius: 50%;
+  border: 5px solid #a69d44;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/*検索ボックスの位置 */
+
+.search_box {
+  margin-left: 40px;
+}
+
+/*募集一覧・検索結果の見出し */
+
+.sub-title {
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+}
+
+.sub-title:before, .sub-title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.sub-title:before {
+  left:0;
+}
+.sub-title:after {
+  right: 0;
+}
+
+/*投稿ボタン */
+
+.btn_answer {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #1c315d;
+  color: #FFF;
+  border-bottom: solid 4px black;
+  border-radius: 5px;
+}
+
+.btn_answer:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+
+/*paginationの位置 */
+
+.pagination {
+  justify-content: center;
+}
+
+/*paginationの文字色 */
+
+.pagination li a {
+  border: none;
+  color: #696969;
+}
+
+/* 表示しているページ番号(active)*/
+
+.pagination .active a.page-link {
+  background-color: #bdc6b7;
+  border-radius: 15px;
+
+}
+
+/*ホバー時*/
+.pagination li a:hover {
+  border-radius: 15px;
+}

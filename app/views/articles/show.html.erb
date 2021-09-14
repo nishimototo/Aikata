@@ -1,8 +1,8 @@
 <div class="container">
   <div class="text-center">
-    <h5><%= @article.title %></h5>
+    <h5 class="article_heading mt-5"><%= @article.title %></h5>
   </div>
-  <div class="card w-50 mx-auto mt-4">
+  <div class="card w-50 mx-auto mt-4 text-center">
     <div class="card-header">
       <%= @article.area %> /
       <%= @article.category %> /
@@ -12,19 +12,19 @@
       /
       <%= @article.created_at.strftime('%Y-%m-%d') %>
     </div>
-    <p class="text-left font-weight-bold"><%= @article.title %></p>
+    <p class="article_title font-weight-bold mt-1"><%= @article.title %></p>
     <p>
       <%= @article.content %>
     </p>
-    <p>
+    <p class="article_icon">
       <span id="favorite_btn_<%= @article.id %>"><%= render "favorites/favorite", article: @article %></span>
       <i class="far fa-eye"></i> <%= @article.impressionist_count %>
     </p>
   </div>
-  <div class="text-center">
+  <div class="text-center mt-3">
     <% if @article.user == current_user %>
-      <i class="fas fa-cog"></i><%= link_to "編集する", edit_article_path(@article) %> /
-      <i class="fas fa-trash-alt"></i><%= link_to "削除する", article_path(@article), data: {confirm: "本当に削除しますか？"}, method: :delete %>
+      <i class="fas fa-cog"></i> <%= link_to "編集する", edit_article_path(@article) %> /
+      <i class="fas fa-trash-alt"></i> <%= link_to "削除する", article_path(@article), data: {confirm: "本当に削除しますか？"}, method: :delete %>
     <% end %>
   </div>
 
@@ -36,14 +36,14 @@
     </table>
 
     <%= form_with model: [@article, @article_comment] do |f| %>
-      <div class="form-group mt-5">
+      <div class="form-group mt-5 text-center">
         <%= f.text_area :comment, rows:"3", class: "form-control" %>
-        <%= f.submit "コメント", class: "btn btn-secondary offset-5 mt-3" %>
+        <%= f.submit "コメント", class: "btn_answer mt-3" %>
       </div>
     <% end %>
   </div>
 
-  <div class="text-center mt-3">
-    <p><i class="far fa-list-alt"></i><%= link_to "募集一覧に戻る", articles_path %></p>
+  <div class="text-center mt-5">
+    <p><i class="far fa-list-alt"></i> <%= link_to "募集一覧に戻る", articles_path %></p>
   </div>
 </div>
