@@ -1,3 +1,19 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* いいねと閲覧数アイコンの位置 */
+.article_icon {
+  text-align: left;
+  margin-left: 5px;
+}
+
+/*記事タイトル（cardの中） */
+
+.article_title {
+ text-align: center;
+}
+
+/*articles/showの記事タイトル（カード外）*/
+
+.article_heading {
+  display: inline-block;
+  border-bottom: solid 5px #bdc6b7;
+}
+

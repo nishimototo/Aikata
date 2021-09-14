@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto mt-3">
-    <h4>お題の投稿</h4>
+  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+    <h4 class="theme_new text-center">お題の投稿</h4>
     <%= form_with model: @theme, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :画像はこちら %>
-        <%= f.attachment_field :image, class: "form-control-file" %>
+      <div class="form-group text-center mt-5">
+        <%= f.label :※画像のアップは「ファイルを選択」 %>
+        <%= f.attachment_field :image, class: "form-control-file offset-1" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :お題 %>
+      <div class="form-group text-center">
+        <%= f.label :お題, class: "font-weight-bold" %>
         <%= f.text_area :content, rows:"5", class: "form-control" %>
       </div>
-      <%= f.submit "投稿", class: "btn btn-secondary offset-5 mt-3" %>
+      <%= f.submit "投稿", class: "btn_answer offset-5 mt-3" %>
     <% end %>
   </div>
 </div>

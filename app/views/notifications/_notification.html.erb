@@ -10,7 +10,7 @@
   <% when "favorite" %>
     <%= link_to "あなたの投稿", article_path(notification.article) %>にいいねしました
   <% when "comment" %>
-    <% if notification.article.user_id == notification.visited.id %>　<!--visited.idから変えた -->
+    <% if notification.article.user_id == notification.visited.id %>
       <%= link_to "あなたの投稿", article_path(notification.article) %>
     <% else %>
       <%= link_to article_path(notification.article) do %>
@@ -21,5 +21,5 @@
   <% end %>
   <%= "(#{time_ago_in_words(notification.created_at)}前)" %>
   <br>
-  <p class="text-muted text-center small"><%= ArticleComment.find_by(id: notification.article_comment_id)&.comment %></p>
+  <p class="text-muted text-center small"><%= truncate(ArticleComment.find_by(id: notification.article_comment_id)&.comment, length: 30)  %></p>
 </div>

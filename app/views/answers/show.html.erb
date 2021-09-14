@@ -29,9 +29,11 @@
     </table>
 
     <%= form_with model: [@theme, @answer, @comment] do |f| %>
-      <div class="form-group mt-5">
+      <div class="form-group">
         <%= f.text_area :comment, rows:"3", class: "form-control" %>
-        <%= f.submit "コメント", class: "btn btn-secondary offset-5 mt-3" %>
+        <div class="text-center">
+          <%= f.submit "コメント", class: "btn_answer mt-3" %>
+        </div>
       </div>
     <% end %>
 
