@@ -18,13 +18,13 @@
             <%= article.created_at.strftime('%Y-%m-%d') %>
           </div>
             <%= link_to article_path(article) do%>
-              <p class="text-left font-weight-bold"><%= article.title %></p>
+              <p class="font-weight-bold mt-1"><%= article.title %></p>
             <% end %>
 
           <p>
             <%= truncate(article.content, length: 50) %>
           </p>
-          <p>
+          <p class="article_icon">
             <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
             <i class="far fa-eye"></i> <%= article.impressionist_count %>
           </p>

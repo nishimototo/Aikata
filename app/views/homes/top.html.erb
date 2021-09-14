@@ -6,7 +6,7 @@
   <div class="mt-4 search_box">
     <%= render "searches/search_form" %>
   </div>
-  <p class="mt-3"><i class="fas fa-pencil-alt"></i><%= link_to "自分で募集する", new_article_path, class:"link" %></p>
+  <p class="mt-3"><i class="fas fa-pencil-alt"></i> <%= link_to "自分で募集する", new_article_path, class:"link" %></p>
 </div>
 <div class="row">
   <div class="col-sm-3 offset-sm-1 mt-5">
@@ -33,7 +33,7 @@
       <h5 class="sub-title">新着の投稿</h5>
     </div>
     <% @articles.each do |article| %>
-      <div class="card mb-4">
+      <div class="card mb-4 text-center">
         <div class="card-header">
           <%= article.area %> /
           <%= article.category %> /
@@ -41,13 +41,13 @@
           <%= article.created_at.strftime('%Y-%m-%d') %>
         </div>
           <%= link_to article_path(article) do%>
-            <p class="text-left font-weight-bold"><%= article.title %></p>
+            <p class="font-weight-bold mt-1"><%= article.title %></p>
           <% end %>
 
         <p>
           <%= truncate(article.content, length: 50) %>
         </p>
-        <p>
+        <p class="article_icon">
           <i class="far fa-eye"></i> <%= article.impressionist_count %>
         </p>
       </div>

@@ -172,3 +172,29 @@ body {
   border-bottom: none;
 }
 
+
+/*paginationの位置 */
+
+.pagination {
+  justify-content: center;
+}
+
+/*paginationの文字色 */
+
+.pagination li a {
+  border: none;
+  color: #696969;
+}
+
+/* 表示しているページ番号(active)*/
+
+.pagination .active a.page-link {
+  background-color: #bdc6b7;
+  border-radius: 15px;
+
+}
+
+/*ホバー時*/
+.pagination li a:hover {
+  border-radius: 15px;
+}
