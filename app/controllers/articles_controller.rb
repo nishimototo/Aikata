@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.page(params[:page]).per(5).order(params[:sort]).order(created_at: :DESC)
+    if params[:sort]
+      @articles = Article.page(params[:page]).per(5).order(params[:sort])
+    else
+       @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
+    end
   end
 
   def show

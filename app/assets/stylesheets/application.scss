@@ -188,9 +188,10 @@ body {
 
 /* 表示しているページ番号(active)*/
 
-.pagination .active a {
+.pagination .active a.page-link {
   background-color: red;
   border-radius: 15px;
+
 }
 
 /*ホバー時*/
