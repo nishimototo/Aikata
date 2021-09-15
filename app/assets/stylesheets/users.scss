@@ -28,7 +28,7 @@
   text-align: center;
   padding: 0 40px;
   font-size: 18px;
-  background: #d58d9d;
+  background: #788897;
   color: #FFF;
   box-sizing: border-box;
 }
@@ -76,7 +76,7 @@
 .form-wrapper {
   margin: 1.5em auto;
   padding: 3em 1em 3em 1em;
-  max-width: 370px;
+  max-width: 450px;
   border: 10px solid #788897;
   border-radius: 10px;
 }
@@ -116,8 +116,8 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
 }
 
 .button-panel {
-  margin: 2em 0 0;
-  width: 100%;
+  margin: 2em auto; /*ボタン中央寄せと上下に幅*/
+  width: 70%; /*ボタン幅 */
 }
 
 .button-panel .button {
@@ -125,7 +125,7 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
   border: none;
   color: #fff;
   cursor: pointer;
-  height: 40px;
+  height: 35px;
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
   letter-spacing: 0.05em;
@@ -136,7 +136,7 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
 }
 
 .button-panel .button:hover {
-  background: #9d777c;
+  background: #b0717e;
 }
 
 /*「次回から自動ログインのフォント」 */
@@ -146,8 +146,8 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
 
 /*新規登録、ログイン見出し */
 .sign-up, .sign-in {
-  padding: 0.5em 1em;
-    margin: 2em 0;
+    padding: 0.5em 1em;
+    margin: 2em;
     font-weight: bold;
     color: black;
     background: #FFF;

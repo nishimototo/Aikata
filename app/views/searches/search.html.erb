@@ -4,7 +4,7 @@
     <div class="mt-4 search_box">
       <%= render "searches/search_form" %>
     </div>
-    <h5 class="sub-title mt-3"><%= params[:area] %>で<%= params[:category] %></h5>
+    <h5 class="sub-title mt-3"><%= params[:area] %> <%= params[:category] %></h5>
     <% if @articles.present? %>
       <% @articles.each do |article| %>
         <div class="card w-50 mx-auto mt-3">
@@ -30,7 +30,9 @@
           </p>
         </div>
       <% end %>
-      <%= paginate @articles %>
+      <div class="mt-5"
+        <%= paginate @articles %>
+      </div>
     <% else %>
       <p class="mt-5">該当する記事が見つかりませんでした</p>
     <% end %>
