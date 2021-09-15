@@ -28,7 +28,7 @@
   text-align: center;
   padding: 0 40px;
   font-size: 18px;
-  background: #d58d9d;
+  background: #788897;
   color: #FFF;
   box-sizing: border-box;
 }
@@ -69,4 +69,93 @@
 .introduction_content {
   text-align: left;
   padding-top: 10px;
+}
+
+/*新規登録・ログインフォーム*/
+
+.form-wrapper {
+  margin: 1.5em auto;
+  padding: 3em 1em 3em 1em;
+  max-width: 450px;
+  border: 10px solid #788897;
+  border-radius: 10px;
+}
+
+.form-wrapper h4 {
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+.form {
+padding: 0 1.5em;
+}
+
+.form-item {
+  margin-bottom: 0.75em;
+  width: 100%;
+}
+
+.form-item input {
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.form-item input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
+}
+
+input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
+    box-shadow: 0 0 0 1000px white inset;
+}
+
+.button-panel {
+  margin: 2em auto; /*ボタン中央寄せと上下に幅*/
+  width: 70%; /*ボタン幅 */
+}
+
+.button-panel .button {
+  background: #788897;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 35px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.button-panel .button:hover {
+  background: #b0717e;
+}
+
+/*「次回から自動ログインのフォント」 */
+.login-auto {
+  font-size: 0.9em;
+}
+
+/*新規登録、ログイン見出し */
+.sign-up, .sign-in {
+    padding: 0.5em 1em;
+    margin: 2em;
+    font-weight: bold;
+    color: black;
+    background: #FFF;
+    border: solid 5px #788897;
+    border-radius: 15px;
+}
+
+.sign-up h5, .sign-in h5 {
+    margin: 0;
+    padding: 0;
 }

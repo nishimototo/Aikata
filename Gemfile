@@ -80,5 +80,6 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'impressionist', '~>1.6.1'
 
 gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
 
 gem 'dotenv-rails'

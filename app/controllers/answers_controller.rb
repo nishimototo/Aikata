@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @theme = Theme.find(params[:theme_id])
   end

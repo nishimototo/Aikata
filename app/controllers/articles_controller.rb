@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   impressionist :actions=> [:show], unique: [:ip_address]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
