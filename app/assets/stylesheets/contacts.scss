@@ -1,3 +1,65 @@
-// Place all the styles related to the contacts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*入力内容の確認ボタンの配置*/
+.contact-new-btn {
+  margin-right: 30px;
+}
+
+/*入力確認画面の囲い */
+.contact-confirm-box {
+  border: 5px solid #788897;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+/*thanksページ配置 */
+.thanks-box {
+  margin-top: 60px;
+}
+
+/*thanksページのメッセージ */
+.thanks {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 18px;
+  background: #788897;
+  color: #FFF;
+  box-sizing: border-box;
+}
+
+ .thanks h5 {
+  margin: 0;
+  padding: 0 30px;
+  border-top: dashed 2px rgba(255, 255, 255, 0.5);
+  border-bottom: dashed 2px rgba(255, 255, 255, 0.5);
+  line-height: 42px;
+}
+
+.thanks:before, .thanks:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.thanks:before {
+  /*左の山形*/
+  top: 0;
+  left: 0;
+  border-width: 30px 0px 30px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.thanks:after {
+  /*右の山形*/
+  top: 0;
+  right: 0;
+  border-width: 30px 15px 30px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}

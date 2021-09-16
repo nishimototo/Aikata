@@ -1,34 +1,27 @@
 <div class="container">
-  <div class="col-sm-11 col-md-8 col-lg-5 mx-auto mt-5">
-    <table>
-      <tbody>
-        <tr>
-          <td>お名前</td>
-          <td><%= @contact.name %></td>
-        </tr>
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= @contact.email %></td>
-        </tr>
-        <tr>
-          <td>お問い合わせ内容</td>
-          <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="col-sm-11 col-md-8 mx-auto mt-5">
+    <div class="contact-confirm-box">
+      <p>【お名前】 <%= @contact.name %>様</p>
+      <p>【メールアドレス】 <%= @contact.email %> </p>
+      <p>【お問い合わせ内容】</p>
+      <p style="white-space: pre-wrap;", class="contact-message"><%= @contact.message %></p>
+    </div>
 
-    <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :email %>
-      <%= f.hidden_field :message %>
-      <div><%= f.submit "送信" %></div>
-    <% end %>
-
-    <%= form_with model: @contact, url: back_contacts_path, local: true do |f| %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :email %>
-      <%= f.hidden_field :message %>
-      <div><%= f.submit "入力画面に戻る" %></div>
-    <% end %>
+    <div class="text-center mt-3">
+      <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :message %>
+        <%= f.submit "送信", class: "btn_answer" %>
+      <% end %>
+    </div>
+    <div class="text-center mt-3">
+      <%= form_with model: @contact, url: back_contacts_path, local: true do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :message %>
+        <%= f.submit "入力画面に戻る", class: "btn_answer" %>
+      <% end %>
+    </div>
   </div>
 </div>
