@@ -12,9 +12,11 @@
       </div>
       <div class="form-group">
         <%= f.label :お問い合わせ内容 %>
-        <%= f.text_area :message, class: "form-control" %>
+        <%= f.text_area :message, rows: "7", class: "form-control" %>
       </div>
-      <%= f.submit "入力内容の確認", class: "btn_answer offset-4" %>
+      <div class="contact-new-btn">
+        <%= f.submit "入力内容の確認", class: "btn_answer offset-4" %>
+      </div>
     <% end %>
   </div>
 </div>

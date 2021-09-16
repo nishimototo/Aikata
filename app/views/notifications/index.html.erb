@@ -4,7 +4,11 @@
       <i class="fas fa-trash-alt"></i> 通知を全て削除
     <% end %>
   </div>
-  <div class="col-sm-11 col-md-8 mx-auto mt-5 notice_box py-3 pl-5">
+  <div class="notice-headline col-sm-11 col-md-8 mx-auto mt-3">
+    <div class="text-center">
+      <h5>通知一覧</h5>
+    </div>
+    <div class="notice_box">
       <% if @notifications.present? %>
         <% @notifications.each do |notification| %>
           <%= render notification, notification: notification %>
@@ -13,5 +17,6 @@
       <% else %>
        <p class="text-center">未読の通知はありません</p>
       <% end %>
+    </div>
   </div>
 </div>

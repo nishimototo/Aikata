@@ -1,3 +1,16 @@
+/*チャット相手の名前部分 */
+.chat-name {
+  display: inline-block;
+  padding: 0.3em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  color: #1c315d;
+  background: #FFF;
+  border: solid 3px #1c315d;
+  border-radius: 10px;
+}
+
+/* */
 .message {
   padding: 20px 10px;
   max-width: 450px;
