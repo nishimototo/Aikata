@@ -15,7 +15,7 @@
         <h5><i class="fas fa-crown"></i> 大喜利ランキング <i class="fas fa-crown"></i></h5>
       </div>
       <table class="table rate_ranking">
-        <tbody>.
+        <tbody>
           <% @ranks.each do |rank| %>
             <tr>
               <td><%= link_to rank.user_name, user_path(rank.user) %></td>
