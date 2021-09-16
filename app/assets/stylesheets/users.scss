@@ -67,7 +67,6 @@
 }
 
 .introduction_content {
-  text-align: left;
   padding-top: 10px;
 }
 
@@ -158,4 +157,11 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
 .sign-up h5, .sign-in h5 {
     margin: 0;
     padding: 0;
+}
+
+/*フォロー・フォロワー一覧*/
+.follow-box {
+  border: 3px solid #788897;
+  border-radius: 10px;
+  padding: 40px 10px 10px 10px;
 }

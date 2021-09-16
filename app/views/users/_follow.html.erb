@@ -1,13 +1,13 @@
 <% if users.present? %>
-  <div>
+  <div class="follow-box">
     <table class="table table-hover table-inverse">
       <tbody>
         <% users.each do |user| %>
           <tr>
             <td><%= attachment_image_tag user, :profile_image, size: "40x40" %></td>
             <td><%= link_to user.name, user_path(user) %></td>
-            <td>フォロー数: <%= user.active_relationships.count %></td>
-            <td>フォロワー数: <%= user.passive_relationships.count %></td>
+            <td>フォロー数: <%= link_to user.active_relationships.count, follows_user_path(user) %></td>
+            <td>フォロワー数: <%= link_to user.passive_relationships.count, followers_user_path(user) %></td>
           </tr>
         <% end %>
       </tbody>
