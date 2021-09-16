@@ -1,5 +1,6 @@
 <div class="container">
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto mt-5">
+    <h4 class="text-center theme_new">お問い合わせ</h4>
     <%= form_with model: @contact, url: confirm_contacts_path, local: true do |f| %>
       <div class="form-group">
         <%= f.label :お名前 %>
@@ -11,9 +12,11 @@
       </div>
       <div class="form-group">
         <%= f.label :お問い合わせ内容 %>
-        <%= f.text_area :message, class: "form-control" %>
+        <%= f.text_area :message, rows: "7", class: "form-control" %>
       </div>
-      <%= f.submit "入力内容の確認" %>
+      <div class="contact-new-btn">
+        <%= f.submit "入力内容の確認", class: "btn_answer offset-4" %>
+      </div>
     <% end %>
   </div>
 </div>

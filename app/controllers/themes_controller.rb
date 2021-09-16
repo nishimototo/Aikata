@@ -1,4 +1,6 @@
 class ThemesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @themes = Theme.page(params[:page]).per(5).order(created_at: :DESC)
   end
@@ -16,7 +18,7 @@ class ThemesController < ApplicationController
     end
   end
 
- 
+
 
   private
     def theme_params

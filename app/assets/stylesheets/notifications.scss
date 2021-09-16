@@ -2,6 +2,34 @@
 /* 通知の枠組み */
 
 .notice_box {
-  border: 8px double #788897;
-  padding: 20px 0;
+  padding: 1.5em;
+  border: 6px solid #788987;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/*「通知一覧」の文字 */
+
+.notice-headline h5 {
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+}
+
+.notice-headline h5:before, .notice-headline h5:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.notice-headline h5:before {
+  left:0;
+}
+.notice-headline h5:after {
+  right: 0;
 }
