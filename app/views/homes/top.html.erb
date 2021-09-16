@@ -15,13 +15,13 @@
         <h5><i class="fas fa-crown"></i> 大喜利ランキング <i class="fas fa-crown"></i></h5>
       </div>
       <table class="table rate_ranking">
-        <tbody>
-          <% @users.each do |user| %>
+        <tbody>.
+          <% @ranks.each do |rank| %>
             <tr>
-              <td><%= link_to user.name, user_path(user) %></td>
+              <td><%= link_to rank.user_name, user_path(rank.user) %></td>
               <td>
-                <%= link_to my_answer_user_path(user) do %>
-                  <i class="fas fa-star"></i><%= user.rates.sum(:rate).round %>
+                <%= link_to my_answer_user_path(rank.user) do %>
+                  <i class="fas fa-star"></i><%= rank.sum_rate.round %>
                 <% end %>
               </td>
             </tr>

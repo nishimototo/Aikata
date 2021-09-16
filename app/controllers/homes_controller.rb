@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
     @articles = Article.limit(5).order(created_at: :DESC)
-    @users = User.limit(5).includes(:rates).sort{|a,b| b.rates.sum(:rate) <=> a.rates.sum(:rate)} #星の数の合計が多いユーザー5人を選ぶ
+    @ranks = Answer.joins(:rates, :user).group(:user_id).select('answers.user_id, users.name as user_name, sum(rates.rate) as sum_rate').limit(5).order(sum_rate: :DESC)
   end
 end
