@@ -12,6 +12,8 @@
       回答数：<%= link_to theme.answers.count, theme_answers_path(theme) %> /
               <%= link_to "このお題に回答する", new_theme_answer_path(theme) %>
     <% end %>
-    <%= paginate @themes %>
+    <div class="mt-5">
+      <%= paginate @themes %>
+    </div>
   </div>
 </div>

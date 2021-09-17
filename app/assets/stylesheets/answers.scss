@@ -36,9 +36,18 @@
 }
 
 .answer_index p {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
 }
 
+/*「このお題に回答する」*/
+.this_answer_link {
+  margin-left: 15px;
+  font-size: 0.9em;
+}
+
+.this_answer_link .fa-fist-raised {
+  font-size: 1.3em;
+}

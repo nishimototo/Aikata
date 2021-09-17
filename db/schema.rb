@@ -25,43 +25,43 @@ ActiveRecord::Schema.define(version: 2021_09_11_235031) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "theme_id"
-    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "theme_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "article_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "article_id"
-    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "article_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
-    t.text "content"
-    t.string "area"
-    t.string "category"
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.string "area", null: false
+    t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
-    t.text "message"
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "answer_id"
-    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "answer_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2021_09_11_235031) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "article_id"
+    t.integer "user_id", null: false
+    t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -119,16 +119,16 @@ ActiveRecord::Schema.define(version: 2021_09_11_235031) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "answer_id"
-    t.float "rate"
+    t.integer "user_id", null: false
+    t.integer "answer_id", null: false
+    t.float "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "following_id"
-    t.integer "follower_id"
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -139,16 +139,16 @@ ActiveRecord::Schema.define(version: 2021_09_11_235031) do
   end
 
   create_table "themes", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.string "image_id"
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "user_rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_235031) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.string "profile_image_id"
     t.string "introduction"
     t.boolean "is_deleted", default: false

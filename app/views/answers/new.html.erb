@@ -6,6 +6,7 @@
         <%= @theme.content %>
       </p>
     </div>
+    <%= render "answers/error", model: @answer %>
     <%= form_with model: [@theme, @answer], local: true do |f| %>
       <div class="form-group">
         <%= f.text_area :content, rows: "5", class: "form-control" %>

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto mt-3">
     <h4 class="text-center theme_new">募集の投稿</h4>
+    <%= render "answers/error", model: @article %>
     <%= form_with model: @article, local: true do |f| %>
       <div class="form-group">
         <%= f.text_field :title, class:"form-control", placeholder: "タイトルを入力してください" %>

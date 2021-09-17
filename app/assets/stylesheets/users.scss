@@ -10,8 +10,13 @@
 
 /*通知のフラグ */
 
+.checked {
+  margin-left: 3px;
+}
+
 .unchecked {
   color: #9f385b;
+  margin-left: 2px;
 }
 
 .answer_link {
@@ -27,7 +32,7 @@
   line-height: 40px;
   text-align: center;
   padding: 0 40px;
-  font-size: 18px;
+  font-size: 16px;
   background: #788897;
   color: #FFF;
   box-sizing: border-box;
@@ -62,7 +67,7 @@
 .introduction {
   font-size: 0.9rem;
   text-align: center;
-  border: 4px double black;
+  border: 8px double black;
   border-radius: 0.7rem;
 }
 

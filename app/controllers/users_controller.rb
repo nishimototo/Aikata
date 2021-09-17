@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.page(params[:page]).per(5).order(created_at: :DESC)
+    #@total_rate = Answer.joins(:rates).where(user_id: @user.id).sum(:rate)
   end
 
   def edit
@@ -43,7 +44,11 @@ class UsersController < ApplicationController
 
   def my_answer
     @user = User.find(params[:id])
-    @answers = Answer.where(user_id: @user.id)
+    if params[:sort]
+      @answers = @user.answers.page(params[:page]).per(5).order(params[:sort])
+    else
+      @answers = @user.answers.page(params[:page]).per(5).order(created_at: :DESC)
+    end
   end
 
   private

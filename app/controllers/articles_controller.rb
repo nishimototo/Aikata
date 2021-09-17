@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     if params[:sort]
       @articles = Article.page(params[:page]).per(5).order(params[:sort])
     else
-       @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
+      @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
     end
   end
 
