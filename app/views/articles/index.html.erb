@@ -6,8 +6,8 @@
     </div>
     <h4 class="mt-4 sub-title">募集一覧</h4>
     <p>
-      <%= link_to "新着順", articles_path(sort: "created_at DESC") %> /
-      <%= link_to "古い順", articles_path(sort: "created_at ASC") %>
+      <%= link_to "新着順", articles_path %> /
+      <%= link_to "古い順", articles_path(sort: "old") %>
     </p>
     <% @articles.each do |article| %>
       <div class="card w-50 mx-auto mt-3">
@@ -33,7 +33,7 @@
         </p>
       </div>
     <% end %>
-    <div class="mt-5"
+    <div class="mt-5">
       <%= paginate @articles %>
     </div>
   </div>

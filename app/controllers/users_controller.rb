@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.page(params[:page]).per(5).order(created_at: :DESC)
+    #@total_rate = Answer.joins(:rates).where(user_id: @user.id).sum(:rate)
   end
 
   def edit
@@ -43,7 +44,29 @@ class UsersController < ApplicationController
 
   def my_answer
     @user = User.find(params[:id])
-    @answers = Answer.where(user_id: @user.id)
+    if params[:sort] == "old"
+      @answers = @user.answers.order(created_at: :ASC).page(params[:page]).per(5)
+    elsif params[:sort] == "rate"
+      @answers = Answer.left_joins(:rates).where(user_id: @user.id).group(:id).order("SUM(rates.rate) DESC").page(params[:page]).per(5)
+    else
+      @answers = @user.answers.order(created_at: :DESC).page(params[:page]).per(5)
+    end
+
+  end
+
+  def my_chart
+    @user = User.find(params[:id])
+    @score = Answer.joins(:rates, :user).group(:user_id).where(user_id: @user.id).select('answers.user_id, sum(rates.rate) as sum_rate')
+    if Rails.env.development?
+      counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, STRFTIME('%Y-%m-%d', rates.created_at) as rate_created_at, sum(rates.rate) as sum_rate").group_by_day(:rate_created_at)
+    else
+      counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, DATE_FORMAT(rates.created_at, '%Y-%m-%d') as rate_created_at, sum(rates.rate) as sum_rate").group_by_day(:rate_created_at)
+    end
+
+    @counts = []
+    counts.each do |count|
+      @counts.push([count.rate_created_at, count.sum_rate])
+    end
   end
 
   private

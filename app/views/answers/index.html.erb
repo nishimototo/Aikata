@@ -2,18 +2,26 @@
   <div class="text-center">
     <h5 class="theme"><%= @theme.content %></h5>
   </div>
+  <span class="this_answer_link"><i class="fas fa-fist-raised"></i> <%= link_to "このお題に回答する", new_theme_answer_path(@theme) %></span>
+  <div class="text-center">
+    <%= link_to "新しい順", theme_answers_path(@theme) %> /
+    <%= link_to "古い順", theme_answers_path(@theme, sort: "old") %> /
+    <%= link_to "評価の高い順", theme_answers_path(@theme, sort: "rate") %>
+  </div>
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
-      <% @theme.answers.each do |answer| %>
+      <% @answers.each do |answer| %>
         <div class="answer_index">
           <%= link_to theme_answer_path(answer.theme, answer) do %>
             <p><%= answer.content %></p>
           <% end %>
-          <div>
+          <div class="mt-2">
             <span><i class="fas fa-star"></i></span><%= answer.rates.sum(:rate).round %>
             <small class="offset-9"><%= link_to answer.user.name, user_path(answer.user) %></small>
           </div>
         </div>
       <% end %>
   </div>
-  <small><%= link_to "このお題に回答する", new_theme_answer_path(@theme) %></small>
+  <div class="mt-5">
+    <%= paginate @answers %>
+  </div>
 </div>

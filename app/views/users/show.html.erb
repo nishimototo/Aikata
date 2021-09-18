@@ -1,6 +1,6 @@
 <div class="container">
     <div class="text-center">
-      <h3 class="my_name mt-5"><%= @user.name %>さんのマイページ</h3>
+      <h5 class="my_name mt-5"><%= @user.name %>さんのマイページ</h5>
       <div class="introduction col-sm-11 col-md-8 col-lg-5 mx-auto mt-3">
         <p class="introduction_content"><%= @user.introduction %></p>
       </div>
@@ -38,10 +38,15 @@
           <% end %>
         </div>
         <div class="user_box">
-          <div id="follow"><%= render "relationships/relation", user: @user %></div>
+          <p id="follow"><%= render "relationships/relation", user: @user %></p>
           <p>
             <%= link_to my_answer_user_path(@user) do %>
-              <i class="fas fa-bolt"></i><span class="answer_link"><%= @user.name %>さんの大喜利一覧へ</span>
+              <i class="fas fa-bolt ml-1"></i><span class="answer_link"><%= @user.name %>さんの大喜利一覧へ</span>
+            <% end %>
+          </p>
+          <p>
+            <%= link_to my_chart_user_path(@user) do %>
+              <i class="fas fa-chart-line"></i> <span class="ml-1"><%= @user.name %>さんの大喜利グラフへ</span>
             <% end %>
           </p>
         </div>
@@ -76,6 +81,6 @@
         </div>
       　<%= paginate @articles %>
       </div>
-
     </div>
+
 </div>

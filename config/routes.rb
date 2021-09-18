@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get "follows"
       get "followers"
       get "my_answer"
+      get "my_chart"
     end
   end
 

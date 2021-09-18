@@ -2,6 +2,8 @@
   <div class="text-center">
    <h5 class="theme_title mt-4">お題一覧</h5><br>
     <p class="mt-2"><i class="fas fa-pen-alt"></i> <%= link_to "お題を投稿する", new_theme_path %></p>
+    <%= link_to "新しい順", themes_path %> /
+    <%= link_to "古い順", themes_path(sort: "old") %>
     <% @themes.each do |theme| %>
       <div class="theme_box">
         <p>
@@ -12,6 +14,8 @@
       回答数：<%= link_to theme.answers.count, theme_answers_path(theme) %> /
               <%= link_to "このお題に回答する", new_theme_answer_path(theme) %>
     <% end %>
-    <%= paginate @themes %>
+    <div class="mt-5">
+      <%= paginate @themes %>
+    </div>
   </div>
 </div>

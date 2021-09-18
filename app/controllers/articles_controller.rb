@@ -4,10 +4,10 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    if params[:sort]
-      @articles = Article.page(params[:page]).per(5).order(params[:sort])
+    if params[:sort] == "old"
+      @articles = Article.page(params[:page]).per(5).order(created_at: :ASC)
     else
-       @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
+      @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
     end
   end
 

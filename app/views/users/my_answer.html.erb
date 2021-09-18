@@ -1,6 +1,9 @@
 <div class="container">
   <div class="text-center">
-    <h3 class="theme_title mt-4">～<%= @user.name %>さんの大喜利～</h3>
+    <h3 class="theme_title mt-4 mb-3">～<%= @user.name %>さんの大喜利～</h3><br>
+    <%= link_to "新着順", my_answer_user_path(@user) %> /
+    <%= link_to "古い順", my_answer_user_path(@user, sort: "old") %> /
+    <%= link_to "評価の高い順", my_answer_user_path(@user, sort: "rate") %>
     <% @answers.each do |answer| %>
       <div class="theme_box">
         <p>
@@ -14,6 +17,8 @@
       <small><%= link_to "このお題に回答する", new_theme_answer_path(answer.theme) %></small> /
       <small><%= link_to "このお題の回答一覧", theme_answers_path(answer.theme) %></small>
     <% end %>
-
+    <div class="mt-5">
+      <%= paginate @answers %>
+    </div>
   </div>
 </div>

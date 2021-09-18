@@ -10,12 +10,18 @@
 
 /*通知のフラグ */
 
-.unchecked {
-  color: #9f385b;
+.checked {
+  margin-left: 2px;
 }
 
+.unchecked {
+  color: #9f385b;
+  margin-left: 2px;
+}
+
+/*大喜利一覧へ */
 .answer_link {
-  margin-left: 14px;
+  margin-left: 10px;
 }
 
 /*マイページ名前部分 */
@@ -27,7 +33,7 @@
   line-height: 40px;
   text-align: center;
   padding: 0 40px;
-  font-size: 18px;
+  font-size: 16px;
   background: #788897;
   color: #FFF;
   box-sizing: border-box;
@@ -62,7 +68,7 @@
 .introduction {
   font-size: 0.9rem;
   text-align: center;
-  border: 4px double black;
+  border: 8px double black;
   border-radius: 0.7rem;
 }
 
@@ -164,4 +170,18 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
   border: 3px solid #788897;
   border-radius: 10px;
   padding: 40px 10px 10px 10px;
+}
+
+/*グラフの「合計スコア」*/
+
+.total_chart {
+  font-size: 1.2em;
+}
+
+/*退会画面の「退会すると～」の文言 */
+
+.unsubscribe-alert {
+  display: inline-block;
+  border-top: 3px solid #b0717e;
+  border-bottom: 3px solid #b0717e;
 }
