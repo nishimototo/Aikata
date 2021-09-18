@@ -44,6 +44,11 @@
               <i class="fas fa-bolt"></i><span class="answer_link"><%= @user.name %>さんの大喜利一覧へ</span>
             <% end %>
           </p>
+          <p>
+            <%= link_to my_chart_user_path(@user) do %>
+              <i class="fas fa-chart-line"></i> <span><%= @user.name %>さんの大喜利グラフへ</span>
+            <% end %>
+          </p>
         </div>
       </div>
 
