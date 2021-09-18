@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="text-center">
     <h4>本当に退会しますか？</h4>
-    <p class="mt-3">&#8251;退会すると投稿も全て削除されます</p>
+    <p class="mt-3 unsubscribe-alert">&#8251;退会すると、募集の投稿や大喜利の回答などの機能がご利用できなくなります</p>
     <div class="mt-5">
-    <%= link_to "退会する", withdraw_user_path(@user), data: {confirm: "本当に退会しますか？"}, method: :patch %>
-    <%= link_to "退会しない", user_path(@user), class:"offset-1" %>
+    <%= link_to "【退会する】", withdraw_user_path(@user), data: {confirm: "本当に退会しますか？"}, method: :patch %>
+    <%= link_to "【退会しない】", user_path(@user), class:"offset-1" %>
     </div>
   </div>
 

@@ -171,3 +171,17 @@ input:-webkit-autofill { /*オートコンプリート時の色を水色→白*/
   border-radius: 10px;
   padding: 40px 10px 10px 10px;
 }
+
+/*グラフの「合計スコア」*/
+
+.total_chart {
+  font-size: 1.2em;
+}
+
+/*退会画面の「退会すると～」の文言 */
+
+.unsubscribe-alert {
+  display: inline-block;
+  border-top: 3px solid #b0717e;
+  border-bottom: 3px solid #b0717e;
+}
