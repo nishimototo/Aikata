@@ -6,7 +6,7 @@
         <%= f.label :※画像のアップは「ファイルを選択」 %>
         <%= f.attachment_field :image, class: "form-control-file offset-1" %>
       </div>
-
+      <%= render "answers/error", model: @theme %>
       <div class="form-group text-center">
         <%= f.label :お題, class: "font-weight-bold" %>
         <%= f.text_area :content, rows:"5", class: "form-control" %>

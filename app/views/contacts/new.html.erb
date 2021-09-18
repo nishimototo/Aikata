@@ -1,6 +1,7 @@
 <div class="container">
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto mt-5">
     <h4 class="text-center theme_new">お問い合わせ</h4>
+    <%= render "answers/error", model: @contact %>
     <%= form_with model: @contact, url: confirm_contacts_path, local: true do |f| %>
       <div class="form-group">
         <%= f.label :お名前 %>

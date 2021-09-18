@@ -1,12 +1,14 @@
 <div class="container mt-5">
   <div class="text-center">
-    <h5>~ <%= @theme.content %> ~</h5>
+    <h5>~ <%= link_to @theme.content, theme_answers_path(@theme) %> ~</h5>
   </div>
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
     <div class="answer_index">
       <p><%= @answer.content %></p>
-      <span><i class="fas fa-star"></i></span><%= @all_rate %>
-      <small class="offset-9"><%= link_to @answer.user.name, user_path(@answer.user) %></small>
+      <div class="mt-2">
+        <span><i class="fas fa-star"></i></span><%= @all_rate %>
+        <small class="offset-9"><%= link_to @answer.user.name, user_path(@answer.user) %></small>
+      </div>
     </div>
 
     <% if user_signed_in? %>
@@ -21,6 +23,7 @@
         <% end %>
       <% end %>
     <% end %>
+
 
     <table class="table mt-5">
       <tbody id="answer_comment">

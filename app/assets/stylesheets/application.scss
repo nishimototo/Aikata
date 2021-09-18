@@ -87,7 +87,7 @@ footer {
 /* 募集系のカードヘッダー*/
 
 .card-header {
-  background-color: #bdc6b7;
+  background-color: #a7b19b;
 }
 
 /* 募集系のカード外枠*/
@@ -124,7 +124,7 @@ footer {
   width: 150px;
   height: 58px;
   border-radius: 50%;
-  border: 5px solid #a69d44;
+  border: 5px solid #7d826a;
   border-left-color: transparent;
   border-right-color: transparent;
   -webkit-transform: translateX(-50%);
@@ -213,3 +213,8 @@ footer {
   color: #f8eb65;
 }
 
+/*エラーメッセージ */
+
+.alert {
+  color: #196989;
+}

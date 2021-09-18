@@ -2,7 +2,11 @@ class ThemesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @themes = Theme.page(params[:page]).per(5).order(created_at: :DESC)
+    if params[:sort] == "old"
+      @themes = Theme.page(params[:page]).per(5).order(created_at: :ASC)
+    else
+      @themes = Theme.page(params[:page]).per(5).order(created_at: :DESC)
+    end
   end
 
   def new
