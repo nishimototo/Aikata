@@ -44,16 +44,19 @@ class UsersController < ApplicationController
 
   def my_answer
     @user = User.find(params[:id])
-    if params[:sort]
-      @answers = @user.answers.page(params[:page]).per(5).order(params[:sort])
+    if params[:sort] == "old"
+      @answers = @user.answers.order(created_at: :ASC).page(params[:page]).per(5)
+    elsif params[:sort] == "rate"
+      @answers = Answer.left_joins(:rates).where(user_id: @user.id).group(:id).order("SUM(rates.rate) DESC").page(params[:page]).per(5)
     else
-      @answers = @user.answers.page(params[:page]).per(5).order(created_at: :DESC)
+      @answers = @user.answers.order(created_at: :DESC).page(params[:page]).per(5)
     end
+
   end
 
   def my_chart
     @user = User.find(params[:id])
-    @score = Answer.joins(:rates, :user).group(:user_id).where(user_id: @user.id).select('answers.user_id, users.name as user_name, sum(rates.rate) as sum_rate')
+    @score = Answer.joins(:rates, :user).group(:user_id).where(user_id: @user.id).select('answers.user_id, sum(rates.rate) as sum_rate')
     if Rails.env.development?
       counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, STRFTIME('%Y-%m-%d', rates.created_at) as rate_created_at, sum(rates.rate) as sum_rate").group_by_day(:rate_created_at)
     else
