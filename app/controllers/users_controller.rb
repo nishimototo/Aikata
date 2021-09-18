@@ -51,6 +51,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def my_chart
+    @user = User.find(params[:id])
+    #@answer = @user.answers.rates
+    @score = Answer.joins(:rates).where(user_id: @user.id).select('answers.user_id, rates.rate')
+    #byebug
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :profile_image, :introduction)
