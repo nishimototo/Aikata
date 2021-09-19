@@ -25,10 +25,12 @@
               <% end %>
             </p>
             <p>
-              <% if unchecked_notifications.any? %> <!-- notifications_helperから呼び出し -->
-                <span class="unchecked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知があります", notifications_path %>
-              <% else %>
-                <span class="checked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知はありません", notifications_path %>
+              <% if current_user == @user %>
+                <% if unchecked_notifications.any? %> <!-- notifications_helperから呼び出し -->
+                  <span class="unchecked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知があります", notifications_path %>
+                <% else %>
+                  <span class="checked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知はありません", notifications_path %>
+                <% end %>
               <% end %>
             </p>
           <% end %>
