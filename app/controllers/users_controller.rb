@@ -59,7 +59,6 @@ class UsersController < ApplicationController
     else
       counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, DATE_FORMAT(rates.created_at, '%Y-%m-%d') as rate_created_at, sum(rates.rate) as sum_rate").group_by_day('rates.created_at')
     end
-    binding.pry
     @counts = []
     counts.each do |count|
       @counts.push([count.rate_created_at, count.sum_rate])
