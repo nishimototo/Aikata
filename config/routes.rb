@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations',
   }
 
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
   }
 
   root "homes#top"
@@ -28,8 +27,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     member do
-      get "unsubscribe" #退会画面
-      patch "withdraw" #退会処理.is_deletedを更新
+      get "unsubscribe" # 退会画面
+      patch "withdraw" # 退会処理.is_deletedを更新
       get "follows"
       get "followers"
       get "my_answer"

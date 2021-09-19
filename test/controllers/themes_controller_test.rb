@@ -15,5 +15,4 @@ class ThemesControllerTest < ActionDispatch::IntegrationTest
     get themes_new_url
     assert_response :success
   end
-
 end
