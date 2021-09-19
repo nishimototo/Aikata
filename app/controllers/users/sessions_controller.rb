@@ -31,7 +31,7 @@ class Users::SessionsController < Devise::SessionsController
   def reject_user
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
+      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
         flash[:alert] = "このアカウントは退会済みです。"
         redirect_to new_user_session_path
       end
@@ -40,7 +40,7 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
- def after_sign_out_path_for(resource)
+  def after_sign_out_path_for(resource)
     root_path
- end
+  end
 end

@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     if @category.present? && @area.present?
       @articles = Article.where("area LIKE? AND category LIKE?", "#{@area}", "#{@category}").page(params[:page]).per(5).order(created_at: :DESC)
     elsif @category.present?
-      @articles = Article.where("category LIKE?",  "#{@category}").page(params[:page]).per(5).order(created_at: :DESC)
+      @articles = Article.where("category LIKE?", "#{@category}").page(params[:page]).per(5).order(created_at: :DESC)
     elsif @area.present?
       @articles = Article.where("area LIKE?",  "#{@area}").page(params[:page]).per(5).order(created_at: :DESC)
     else
@@ -13,4 +13,3 @@ class SearchesController < ApplicationController
     end
   end
 end
-

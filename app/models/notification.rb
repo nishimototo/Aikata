@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-  default_scope -> { order(created_at: :DESC) } #新しい順に通知のデータを取得
+  default_scope -> { order(created_at: :DESC) } # 新しい順に通知のデータを取得
 
   belongs_to :article, optional: true
   belongs_to :article_comment, optional: true
