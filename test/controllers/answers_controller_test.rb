@@ -15,5 +15,4 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
     get answers_new_url
     assert_response :success
   end
-
 end

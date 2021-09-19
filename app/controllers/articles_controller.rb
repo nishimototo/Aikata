@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  impressionist :actions=> [:show], unique: [:ip_address]
+  impressionist :actions => [:show], unique: [:ip_address]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
@@ -31,7 +31,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -48,14 +47,15 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :content, :area, :category)
-    end
 
-    def ensure_correct_user
-      @article = Article.find(params[:id])
-      if @article.user_id != current_user.id
-        redirect_to articles_path
-      end
+  def article_params
+    params.require(:article).permit(:title, :content, :area, :category)
+  end
+
+  def ensure_correct_user
+    @article = Article.find(params[:id])
+    if @article.user_id != current_user.id
+      redirect_to articles_path
     end
+  end
 end

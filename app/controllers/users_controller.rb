@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -50,7 +49,6 @@ class UsersController < ApplicationController
     else
       @answers = @user.answers.order(created_at: :DESC).page(params[:page]).per(5)
     end
-
   end
 
   def my_chart
@@ -61,7 +59,6 @@ class UsersController < ApplicationController
     else
       counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, DATE_FORMAT(rates.created_at, '%Y-%m-%d') as rate_created_at, sum(rates.rate) as sum_rate").group_by_day('rates.created_at')
     end
-
     @counts = []
     counts.each do |count|
       @counts.push([count.rate_created_at, count.sum_rate])
@@ -69,14 +66,15 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :profile_image, :introduction)
-    end
 
-    def ensure_correct_user
-      @user = User.find(params[:id])
-      if @user != current_user
-        redirect_to user_path(@user)
-      end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :profile_image, :introduction)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(@user)
     end
+  end
 end
