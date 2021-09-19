@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.page(params[:page]).per(5).order(created_at: :DESC)
-    #@total_rate = Answer.joins(:rates).where(user_id: @user.id).sum(:rate)
   end
 
   def edit
@@ -58,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @score = Answer.joins(:rates, :user).group(:user_id).where(user_id: @user.id).select('answers.user_id, sum(rates.rate) as sum_rate')
     if Rails.env.development?
-      counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, STRFTIME('%Y-%m-%d', rates.created_at) as rate_created_at, sum(rates.rate) as sum_rate").group_by_day(:rate_created_at)
+      counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, STRFTIME('%Y-%m-%d', rates.created_at) as rate_created_at, sum(rates.rate) as sum_rate").group_by_day('rates.created_at')
     else
       counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, DATE_FORMAT(rates.created_at, '%Y-%m-%d') as rate_created_at, sum(rates.rate) as sum_rate").group_by_day('rates.created_at')
     end
