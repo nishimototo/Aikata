@@ -1,20 +1,6 @@
 ---
 ja:
   activerecord:
-
-    attributes:
-      theme:
-        content: お題の内容
-      article:
-        title: タイトル
-        content: 募集内容
-      contact:
-        name: お名前
-        email: メールアドレス
-        message: お問い合わせ内容
-      answer:
-        content: 回答内容
-
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
