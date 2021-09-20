@@ -15,7 +15,9 @@
       <div class="form-group">
         <%= f.text_area :content, rows:"7", class:"form-control", placeholder: "募集内容を入力してください" %>
       </div>
-      <%= f.submit "投稿する", class: "btn_answer offset-4" %>
+      <div class="text-center">
+        <%= f.submit "投稿する", class: "btn_answer" %>
+      </div>
     <% end %>
   </div>
 </div>

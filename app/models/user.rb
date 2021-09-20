@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 20}
+  validates :introduction, length: {maximum: 100}
 
   has_many :articles, dependent: :destroy
   has_many :themes, dependent: :destroy

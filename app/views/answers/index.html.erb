@@ -2,8 +2,10 @@
   <div class="text-center">
     <h5 class="theme"><%= @theme.content %></h5>
   </div>
-  <span class="this_answer_link"><i class="fas fa-fist-raised"></i> <%= link_to "このお題に回答する", new_theme_answer_path(@theme) %></span>
   <div class="text-center">
+    <span class="this_answer_link"><i class="fas fa-fist-raised"></i> <%= link_to "このお題に回答する", new_theme_answer_path(@theme) %></span>
+  </div>
+  <div class="text-center mt-3">
     <%= link_to "新しい順", theme_answers_path(@theme) %> /
     <%= link_to "古い順", theme_answers_path(@theme, sort: "old") %> /
     <%= link_to "評価の高い順", theme_answers_path(@theme, sort: "rate") %>
