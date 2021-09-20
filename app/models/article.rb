@@ -1,8 +1,8 @@
 class Article < ApplicationRecord
   is_impressionable
 
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence: true, length: {maximum: 80}
+  validates :content, presence: true, length: {maximum: 1200}
 
   belongs_to :user
   has_many :favorites

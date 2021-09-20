@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
-    <h4>投稿内容の編集</h4>
+    <h4 class="text-center theme_new">投稿内容の編集</h4>
     <%= form_with model: @article, local: true do |f| %>
       <div class="form-group">
         <%= f.label :タイトル %>
@@ -18,7 +18,9 @@
         <%= f.label :本文 %>
         <%= f.text_area :content, rows:"7", class:"form-control" %>
       </div>
-      <%= f.submit "編集する", class: "btn btn-secondary offset-4" %>
+      <div class="text-center">
+        <%= f.submit "編集する", class: "btn_answer" %>
+      </div>
     <% end %>
   </div>
 </div>
