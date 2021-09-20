@@ -11,7 +11,9 @@
         <%= f.label :お題, class: "font-weight-bold" %>
         <%= f.text_area :content, rows:"5", class: "form-control" %>
       </div>
-      <%= f.submit "投稿", class: "btn_answer offset-5 mt-3" %>
+      <div class="text-center mt-3">
+        <%= f.submit "投稿", class: "btn_answer" %>
+      </div>
     <% end %>
   </div>
 </div>
