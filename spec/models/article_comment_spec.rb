@@ -5,6 +5,7 @@ RSpec.describe 'ArticleCommentモデルのテスト', type: :model do
     subject { article_comment.valid? }
 
     let(:user) { create(:user) }
+    let!(:article) { build(:article) }
     let!(:article_comment) { build(:article_comment) }
 
     context 'commentカラム' do

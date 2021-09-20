@@ -62,6 +62,7 @@ class UsersController < ApplicationController
     @counts = []
     counts.each do |count|
       @counts.push([count.rate_created_at, count.sum_rate])
+      return if @counts.count > 8
     end
   end
 
