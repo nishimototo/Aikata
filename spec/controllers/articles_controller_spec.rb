@@ -130,12 +130,14 @@ RSpec.describe ArticlesController, type: :controller do
     context 'ログイン済の場合' do
       it '正常なレスポンスを返すか' do
         sign_in user
-        get :edit, params: {id: article.id}
+        @article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
+        get :edit, params: {id: @article.id}
         expect(response).to be_successful
       end
       it '200レスポンスが返ってきているか' do
         sign_in user
-        get :edit, params: {id: article.id}
+        @article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
+        get :edit, params: {id: @article.id}
         expect(response).to have_http_status '200'
       end
     end
@@ -168,27 +170,33 @@ RSpec.describe ArticlesController, type: :controller do
     context 'ログイン済の場合' do
       it '正常に記事を更新できるか' do
         sign_in user
-        article_params = {title: '相方募集'}
-        patch :update, params: {id: article.id, article: article_params}
-        expect(article.reload.title).to eq '相方募集'
+        article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
+        patch :update, params: { id: article.id, article: {title: '友人募集'} }
+        article.reload
+        expect(article.title).to eq '友人募集'
       end
       it '記事を更新した後、更新された記事の詳細ページにリダイレクトするか' do
         sign_in user
-        article_params = {title: '相方募集'}
-        patch :update, params: {id: article.id, article: article_params}
-        expect(response).to redirect_to "/articles/1"
+        article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
+        patch :update, params: { id: article.id, article: {title: '友人募集'} }
+        article.reload
+        expect(response).to redirect_to "/articles/#{article.id}"
       end
       it '不正な属性を含む記事は更新できなくなっているか' do
         sign_in user
         article_params = {title: nil}
-        patch :update, params: {id: article.id, article: article_params}
+        article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
+        patch :update, params: { id: article.id, article: article_params }
+        article.reload
         expect(article.reload.title).to eq "相方募集"
       end
       it '不正な記事を更新しようとすると、再度編集ページへリダイレクトされるか' do
         sign_in user
         article_params = {title: nil}
-        patch :update, params: {id: article.id, article: article_params}
-        expect(response).to redirect_to "/articles/1/edit"
+        article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
+        patch :update, params: { id: article.id, article: article_params }
+        article.reload
+        expect(response).to render_template :edit
       end
     end
     context '他のログイン済ユーザーの場合' do
@@ -234,6 +242,7 @@ RSpec.describe ArticlesController, type: :controller do
     context 'ログイン済のユーザー' do
       it '正常に記事を削除できるか' do
         sign_in user
+        article = Article.create(user_id: user.id, title: '相方募集', content: '相方を探しています', area: '関東募集', category: '相方募集')
         expect {
           delete :destroy, params: {id: article.id}
         }.to change(user.articles, :count).by(-1)

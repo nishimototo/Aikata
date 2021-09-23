@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :user, class: User do
     name { Faker::Lorem.characters(number: 5) }
     email { Faker::Internet.email }
     introduction { Faker::Lorem.characters(number: 20) }
@@ -7,7 +7,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
-  factory :another_user do
+  factory :another_user, class: User do
     name { Faker::Lorem.characters(number: 5) }
     email { Faker::Internet.email }
     introduction { Faker::Lorem.characters(number: 20) }
