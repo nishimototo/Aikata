@@ -5,36 +5,38 @@
       <%= render "searches/search_form" %>
     </div>
     <h5 class="sub-title mt-3"><%= params[:area] %> <%= params[:category] %></h5>
-    <% if @articles.present? %>
-      <% @articles.each do |article| %>
-        <div class="card w-50 mx-auto mt-3">
-          <div class="card-header">
-            <%= article.area %> /
-            <%= article.category %> /
-            <%= link_to user_path(article.user) do %>
-              <%= article.user.name %>
-            <% end %>
-            /
-            <%= article.created_at.strftime('%Y-%m-%d') %>
-          </div>
-            <%= link_to article_path(article) do%>
-              <p class="font-weight-bold mt-1"><%= article.title %></p>
-            <% end %>
+    <div class="col-md-7 mx-auto">
+      <% if @articles.present? %>
+        <% @articles.each do |article| %>
+          <div class="card mt-3">
+            <div class="card-header">
+              <%= article.area %> /
+              <%= article.category %> /
+              <%= link_to user_path(article.user) do %>
+                <%= article.user.name %>
+              <% end %>
+              /
+              <%= article.created_at.strftime('%Y-%m-%d') %>
+            </div>
+              <%= link_to article_path(article) do%>
+                <p class="font-weight-bold mt-1"><%= article.title %></p>
+              <% end %>
 
-          <p>
-            <%= truncate(article.content, length: 50) %>
-          </p>
-          <p class="article_icon">
-            <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
-            <i class="far fa-eye"></i> <%= article.impressionist_count %>
-          </p>
+            <p>
+              <%= truncate(article.content, length: 50) %>
+            </p>
+            <p class="article_icon">
+              <span id="favorite_btn_<%= article.id %>"><%= render "favorites/favorite", article: article %></span>
+              <i class="far fa-eye"></i> <%= article.impressionist_count %>
+            </p>
+          </div>
+        <% end %>
+        <div class="mt-5">
+          <%= paginate @articles %>
         </div>
+      <% else %>
+        <p class="mt-5">該当する記事が見つかりませんでした</p>
       <% end %>
-      <div class="mt-5">
-        <%= paginate @articles %>
-      </div>
-    <% else %>
-      <p class="mt-5">該当する記事が見つかりませんでした</p>
-    <% end %>
+    </div>
   </div>
 </div>
