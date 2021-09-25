@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } #PWリセット用に
+  config.action_mailer.default_url_options = { host: '45da25e2198443878c86ecfecf483798.vfs.cloud9.ap-northeast-1.amazonaws.com'} #PWリセット用に
 
   # Settings specified here will take precedence over those in config/application.rb.
 
