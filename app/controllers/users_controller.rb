@@ -62,7 +62,6 @@ class UsersController < ApplicationController
     @counts = []
     counts.each do |count|
       @counts.push([count.rate_created_at, count.sum_rate])
-      #return if @counts.count > 6 #直近7日分の集計.↑でlimit(7)でも一緒か
     end
   end
 
