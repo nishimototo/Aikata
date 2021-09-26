@@ -43,4 +43,12 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def me?(user_id) #user == current_userなど定義したい時に使う
+    id == user_id
+  end
+
+  def rate_count(num = 7) #answer.rbで定義したクラスrate_countをdef内で使用
+    answers.rate_count.map {|count| [count.rate_created_at, count.sum_rate]}
+  end
 end
