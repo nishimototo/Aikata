@@ -34,12 +34,13 @@
         <%= render "article_comments/article_comment", article: @article %>
       </tbody>
     </table>
-
-    <%= form_with model: [@article, @article_comment] do |f| %>
-      <div class="form-group mt-5 text-center">
-        <%= f.text_area :comment, rows:"3", class: "form-control" %>
-        <%= f.submit "コメント", class: "btn_answer mt-3" %>
-      </div>
+    <% if user_signed_in? %>
+      <%= form_with model: [@article, @article_comment] do |f| %>
+        <div class="form-group mt-5 text-center">
+          <%= f.text_area :comment, rows:"3", class: "form-control" %>
+          <%= f.submit "コメント", class: "btn_answer mt-3" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 

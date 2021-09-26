@@ -20,12 +20,12 @@
           </p>
           <% if user_signed_in? %>
             <p>
-              <% if current_user != @user && current_user.followed_by?(@user) && @user.followed_by?(current_user) %>
+              <% if !current_user.me?(@user.id) && current_user.followed_by?(@user) && @user.followed_by?(current_user) %>
                 <i class="fas fa-comment-dots"></i> <%= link_to "チャットする", chat_path(@user) %>
               <% end %>
             </p>
             <p>
-              <% if current_user == @user %>
+              <% if current_user.me?(@user.id) %>
                 <% if unchecked_notifications.any? %> <!-- notifications_helperから呼び出し -->
                   <span class="unchecked"><i class="far fa-lightbulb"></i></span> <%= link_to "未読の通知があります", notifications_path %>
                 <% else %>
@@ -34,7 +34,7 @@
               <% end %>
             </p>
           <% end %>
-          <% if @user == current_user %>
+          <% if current_user.me?(@user.id) %>
              <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
             <i class="fas fa-sad-tear"></i> <%= link_to "退会する", unsubscribe_user_path(@user) %>
           <% end %>

@@ -1,29 +1,27 @@
 <div class="container">
   <div class="col-sm-11 col-md-8 col-lg-5 mx-auto text-center mt-5">
-    <h5 class="class="theme_new"">パスワード変更</h5>
+    <h5 class="theme_new">パスワード変更</h5>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "users/shared/error_messages", resource: resource %>
       <%= f.hidden_field :reset_password_token %>
 
       <div class="field">
-        <%= f.label :password, "New password" %><br />
+        <%= f.label :password, "新しいパスワード" %><br />
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <em>(<%= @minimum_password_length %> 文字以上)</em><br />
         <% end %>
         <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
+      <div class="field mt-3">
+        <%= f.label :password_confirmation, "パスワードをもう一度入力してください" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="actions">
+      <div class="actions mt-3">
         <%= f.submit "パスワードを変更する", class: "btn_answer", style:"padding: 3px;" %>
       </div>
     <% end %>
-
-    <%= render "users/shared/links" %>
   </div>
 </div>

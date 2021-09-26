@@ -54,15 +54,7 @@ class UsersController < ApplicationController
   def my_chart
     @user = User.find(params[:id])
     @score = Answer.joins(:rates, :user).group(:user_id).where(user_id: @user.id).select('answers.user_id, sum(rates.rate) as sum_rate')
-    if Rails.env.development?
-      counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, STRFTIME('%Y-%m-%d', rates.created_at) as rate_created_at, sum(rates.rate) as sum_rate").group_by_day('rates.created_at').order('rates.created_at DESC').limit(7)
-    else
-      counts =  Answer.joins(:rates).where(user_id: @user.id).select("answers.user_id, DATE_FORMAT(rates.created_at, '%Y-%m-%d') as rate_created_at, sum(rates.rate) as sum_rate").group_by_day('rates.created_at').order('rates.created_at DESC').limit(7)
-    end
-    @counts = []
-    counts.each do |count|
-      @counts.push([count.rate_created_at, count.sum_rate])
-    end
+    @counts = @user.rate_count #記述が長いためanswer.rbにメソッド定義
   end
 
   private
