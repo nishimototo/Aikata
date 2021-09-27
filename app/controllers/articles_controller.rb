@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:sort] == "old"
-      @articles = Article.page(params[:page]).per(5).order(created_at: :ASC)
+      @articles = Article.includes(:user).page(params[:page]).per(5).order(created_at: :ASC)
     else
-      @articles = Article.page(params[:page]).per(5).order(created_at: :DESC)
+      @articles = Article.includes(:user).page(params[:page]).per(5).order(created_at: :DESC)
     end
   end
 
