@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root "homes#top"
   get "search" => "searches#search"
   get "chat/:id" => "chats#show", as: "chat"
+  get "answers/answer_all" => "answers#answer_all", as: "answer_all"
 
   namespace :admins do
     resources :users, only: [:index, :edit, :update]
