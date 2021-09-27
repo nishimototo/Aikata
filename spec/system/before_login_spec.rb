@@ -45,12 +45,20 @@ describe 'ログイン前のテスト' do
         theme_link = find_all('a')[4].native.inner_text
         expect(page).to have_link theme_link, href: themes_path
       end
-      it 'お問い合わせリンクが表示される: 左から5番目のリンクが「お問い合わせ」である' do
-        contact_link = find_all('a')[5].native.inner_text
+      it '回答一覧リンクが表示される: 左から5番目のリンクが「回答一覧」である' do
+        answer_link = find_all('a')[5].native.inner_text
+        expect(answer_link).to match(/回答一覧/i)
+      end
+      it '回答一覧リンクの内容が正しい' do
+        answer_link = find_all('a')[5].native.inner_text
+        expect(page).to have_link answer_link, href: answer_all_path
+      end
+      it 'お問い合わせリンクが表示される: 左から6番目のリンクが「お問い合わせ」である' do
+        contact_link = find_all('a')[6].native.inner_text
         expect(contact_link).to match(/お問い合わせ/i)
       end
       it 'お問い合わせリンクの内容が正しい' do
-        contact_link = find_all('a')[5].native.inner_text
+        contact_link = find_all('a')[6].native.inner_text
         expect(page).to have_link contact_link, href: new_contact_path
       end
     end
@@ -208,12 +216,20 @@ describe 'ログイン前のテスト' do
         theme_link = find_all('a')[5].native.inner_text
         expect(page).to have_link theme_link, href: themes_path
       end
-      it 'お問い合わせリンクが表示される: 左から6番目のリンクが「お問い合わせ」である' do
-        contact_link = find_all('a')[6].native.inner_text
+      it '回答一覧リンクが表示される: 左から6番目のリンクが「回答一覧」である' do
+        answer_link = find_all('a')[6].native.inner_text
+        expect(answer_link).to match(/回答一覧/i)
+      end
+      it '回答一覧リンクの内容が正しい' do
+        answer_link = find_all('a')[6].native.inner_text
+        expect(page).to have_link answer_link, href: answer_all_path
+      end
+      it 'お問い合わせリンクが表示される: 左から7番目のリンクが「お問い合わせ」である' do
+        contact_link = find_all('a')[7].native.inner_text
         expect(contact_link).to match(/お問い合わせ/i)
       end
       it 'お問い合わせリンクの内容が正しい' do
-        contact_link = find_all('a')[6].native.inner_text
+        contact_link = find_all('a')[7].native.inner_text
         expect(page).to have_link contact_link, href: new_contact_path
       end
     end
