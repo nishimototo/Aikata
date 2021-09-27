@@ -95,3 +95,7 @@ gem 'chartkick'
 gem 'groupdate'
 
 gem 'rubocop-airbnb'
+
+group :development do
+  gem 'bullet'
+end

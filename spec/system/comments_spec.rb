@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'お題へのコメント機能のテスト', type: :system do
-  describe 'お題に対するコメントの投稿テスト' do
+RSpec.describe '回答へのコメント機能のテスト', type: :system do
+  describe '回答に対するコメントの投稿テスト' do
     let(:user) { create(:user) }
     let!(:theme) { create(:theme, user: user) }
     let!(:answer) { create(:answer, user: user) }
