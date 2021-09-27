@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="text-center">
+    <h3 class="theme_title mt-4 mb-3">～全ての回答～</h3><br>
+    <%= link_to "新しい順", answer_all_path %> /
+    <%= link_to "古い順", answer_all_path(sort: "old") %> /
+    <%= link_to "評価の高い順", answer_all_path(sort: "rate") %>
+    <% @answers.each do |answer| %>
+      <div class="theme_box">
+        <p>
+          <%= answer.theme.content %>
+        </p>
+      </div>
+      <div>
+      <p class="font-weight-bold"><%= link_to answer.content, theme_answer_path(answer.theme, answer) %></p>
+      <i class="fas fa-star"></i><%= answer.rates.sum(:rate).round %>
+      </div>
+      <small><%= link_to "このお題に回答する", new_theme_answer_path(answer.theme) %></small> /
+      <small><%= link_to "このお題の回答一覧", theme_answers_path(answer.theme) %></small>
+    <% end %>
+    <div class="mt-5">
+      <%= paginate @answers %>
+    </div>
+  </div>
+</div>
