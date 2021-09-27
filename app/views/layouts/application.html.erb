@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
-    
+
   </head>
 
   <body class="d-flex flex-column vh-100">
@@ -40,6 +40,9 @@
                     <%= link_to "お題一覧", themes_path, class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
+                    <%= link_to "回答一覧", answer_all_path, class: 'nav-link text-dark' %>
+                  </li>
+                  <li class="nav-item">
                     <%= link_to "お問い合わせ", new_contact_path, class: 'nav-link text-dark' %>
                   </li>
                 <% else %>
@@ -54,6 +57,9 @@
                   </li>
                   <li class="nav-item">
                     <%= link_to "お題一覧", themes_path, class: 'nav-link text-dark' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "回答一覧", answer_all_path, class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
                     <%= link_to "お問い合わせ", new_contact_path, class: 'nav-link text-dark' %>
