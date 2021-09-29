@@ -191,7 +191,6 @@ describe 'ログイン前のテスト' do
         mypage_link = find_all('a')[2].native.inner_text
         expect(page).to have_link mypage_link, href: user_path(user.id)
       end
-
       it '募集するリンクが表示される: 左から3番目のリンクが「募集する」である' do
         new_article_link = find_all('a')[3].native.inner_text
         expect(new_article_link).to match(/募集する/i)
