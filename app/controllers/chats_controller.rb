@@ -16,7 +16,7 @@ class ChatsController < ApplicationController
     end
 
     @chat = Chat.new(room_id: @room.id)
-    @chats = @room.chats
+    @chats = @room.chats.includes([:user])
   end
 
   def create
