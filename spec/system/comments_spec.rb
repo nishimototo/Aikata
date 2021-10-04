@@ -22,7 +22,6 @@ RSpec.describe '回答へのコメント機能のテスト', type: :system do
         expect{ click_button 'コメント'}.to change(user.comments, :count).by(1)
       end
     end
-
     context 'コメントの投稿に失敗する場合' do
       before do
         fill_in 'comment[comment]', with: ''
