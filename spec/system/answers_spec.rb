@@ -5,7 +5,7 @@ RSpec.describe '回答機能のテスト', type: :system do
   describe '回答の投稿のテスト' do
     let(:user) { create(:user) }
     let!(:theme) { create(:theme, user: user) }
-    let(:answer) {create(:answer, user: user)}
+    let(:answer) { create(:answer, user: user) }
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
