@@ -26,7 +26,6 @@ class User < ApplicationRecord
 
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
-  has_many :rooms, through: :user_rooms #追加
 
   def active_for_authentication?
     super && (is_deleted == false)
