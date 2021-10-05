@@ -22,16 +22,26 @@
       </div>
       <% end %>
     <% end %>
-</div>
-<div class="text-center">
-  <%= form_with model: @chat do |f| %>
-    <div class="form-group">
-      <%= f.text_area :message, rows: "3", cols:"30" %>
-    </div>
-      <%= f.hidden_field :room_id %>
-    <div class="text-center">
-      <%= f.submit "送信", class: "btn_answer" %>
-    </div>
-  <% end %>
-</div>
+  </div>
+  <div class="text-center">
+    <%= form_with model: @chat do |f| %>
+      <div class="form-group">
+        <%= f.text_area :message, rows: "3", cols:"30" %>
+      </div>
+        <%= f.hidden_field :room_id %>
+      <div class="text-center">
+        <%= f.submit "送信", class: "btn_answer", id: "target" %>
+      </div>
+    <% end %>
+  </div>
+
+  <script>
+    //最新の投稿は下部にあるため、チャットルーム遷移時、入力フォームの位置までスクロール
+    var element = document.getElementById('target');
+    var rect = element.getBoundingClientRect();
+    var position = rect.top;
+    setTimeout( function() {
+        scrollTo(0, position);}
+        , 1000);
+  </script>
 
