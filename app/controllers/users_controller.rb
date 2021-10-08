@@ -26,18 +26,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会が完了しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 
   def follows
     @user = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(10)
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(10)
   end
 
   def my_answer
