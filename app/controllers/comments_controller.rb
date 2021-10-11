@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.answer_id = @answer.id
     if @comment.save
-     render "create.js.erb" #Rspec様にrenderを明示
+      render "create.js.erb" # Rspec様にrenderを明示
     else
       @rate = Rate.new
       @theme = Theme.find(params[:theme_id])
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @answer = Answer.find(params[:answer_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    render "destroy.js.erb" #Rspec様にrenderを明示
+    render "destroy.js.erb" # Rspec様にrenderを明示
   end
 
   private

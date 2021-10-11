@@ -30,16 +30,19 @@ RSpec.describe 'Answerモデルのテスト', type: :model do
         expect(Answer.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context 'Themeモデルとの関係' do
       it 'N:1となっている' do
         expect(Answer.reflect_on_association(:theme).macro).to eq :belongs_to
       end
     end
+
     context 'Commentモデルとの関係' do
       it '1:Nとなっている' do
         expect(Answer.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
+
     context 'Rateモデルとの関係' do
       it '1:Nとなっている' do
         expect(Answer.reflect_on_association(:rates).macro).to eq :has_many

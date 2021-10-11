@@ -13,12 +13,14 @@ RSpec.describe '記事へのコメント機能のテスト', type: :system do
       click_button 'ログイン'
       visit article_path(article.id)
     end
+
     context 'コメントの投稿に成功する場合' do
       before do
         fill_in 'article_comment[comment]', with: Faker::Lorem.characters(number: 20)
       end
+
       it '自分のコメントが正しく保存される' do
-        expect{ click_button 'コメント'}.to change(user.article_comments, :count).by(1)
+        expect { click_button 'コメント' }.to change(user.article_comments, :count).by(1)
       end
     end
 
@@ -26,8 +28,9 @@ RSpec.describe '記事へのコメント機能のテスト', type: :system do
       before do
         fill_in 'article_comment[comment]', with: ''
       end
+
       it '自分のコメントが正しく保存されない' do
-        expect{ click_button 'コメント'}.not_to change(user.article_comments, :count)
+        expect { click_button 'コメント' }.not_to change(user.article_comments, :count)
       end
     end
   end

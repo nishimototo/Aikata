@@ -40,46 +40,54 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:articles).macro).to eq :has_many
       end
     end
+
     context 'Themeモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:themes).macro).to eq :has_many
       end
     end
+
     context 'Answerモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:answers).macro).to eq :has_many
       end
     end
+
     context 'Commentモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
+
     context 'Rateモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:rates).macro).to eq :has_many
       end
     end
+
     context 'Favoriteモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
+
     context 'ArticleCommentモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:article_comments).macro).to eq :has_many
       end
     end
+
     context 'UserRommモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:user_rooms).macro).to eq :has_many
       end
     end
+
     context 'Chatモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:chats).macro).to eq :has_many
       end
     end
-    #フォローと通知のとこ
+    # フォローと通知のとこ
   end
 end

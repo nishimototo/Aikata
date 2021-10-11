@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  validates :name, presence: true, length: {maximum: 20}
-  validates :introduction, length: {maximum: 100}
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :introduction, length: { maximum: 100 }
 
   has_many :articles, dependent: :destroy
   has_many :themes, dependent: :destroy
@@ -44,11 +44,11 @@ class User < ApplicationRecord
     end
   end
 
-  def me?(user_id) #user == current_userなど定義したい時に使う
+  def me?(user_id) # user == current_userなど定義したい時用
     id == user_id
   end
 
-  def rate_count(num = 7) #answer.rbで定義したクラスrate_countをdef内で使用
-    answers.rate_count.map {|count| [count.rate_created_at, count.sum_rate]}
+  def rate_count(num = 7) # answer.rbで定義したクラスrate_countをdef内で使用
+    answers.rate_count.map { |count| [count.rate_created_at, count.sum_rate] }
   end
 end

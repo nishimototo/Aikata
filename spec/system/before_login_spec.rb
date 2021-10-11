@@ -100,8 +100,9 @@ describe 'ログイン前のテスト' do
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
       end
+
       it '正しく登録される' do
-        expect {click_button '新規登録'}.to change(User.all, :count).by(1)
+        expect { click_button '新規登録' }.to change(User.all, :count).by(1)
       end
       it '新規登録後のリダイレクト先が、トップ画面になっている' do
         click_button '新規登録'
@@ -112,6 +113,7 @@ describe 'ログイン前のテスト' do
 
   describe 'ユーザーログインのテスト' do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
     end
@@ -164,6 +166,7 @@ describe 'ログイン前のテスト' do
 
   describe 'ヘッダーのテスト（ログイン済の場合）' do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
@@ -236,6 +239,7 @@ describe 'ログイン前のテスト' do
 
   describe 'ログアウトのテスト' do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
@@ -245,16 +249,15 @@ describe 'ログイン前のテスト' do
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
     end
+
     context 'ログアウト機能のテスト' do
       it '正しくログアウトできている:ログアウト後のリダイレクト先にログインリンクが表示されている' do
         login_link = find_all('a')[1].native.inner_text
-        expect(page).to have_link login_link, href:  new_user_session_path
+        expect(page).to have_link login_link, href: new_user_session_path
       end
       it 'ログアウト後のリダイレクト先がトップ画面になっている' do
         expect(current_path).to eq '/'
       end
     end
   end
-
-
 end
