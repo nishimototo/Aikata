@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'ユーザー機能のテスト', type: :system do
   describe 'マイページ(ユーザー詳細画面)のテスト' do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
@@ -57,6 +58,7 @@ RSpec.describe 'ユーザー機能のテスト', type: :system do
       before do
         visit unsubscribe_user_path(user.id)
       end
+
       it '退会しないを押すとマイページに遷移する' do
         back_link = find_all('a')[9].native.inner_text
         back_link = back_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
@@ -69,7 +71,7 @@ RSpec.describe 'ユーザー機能のテスト', type: :system do
         click_link withdraw_link
         expect(current_path).to eq "/"
       end
-       it '退会するとログインができなくなり、再度ログイン画面にリダイレクトされる' do
+      it '退会するとログインができなくなり、再度ログイン画面にリダイレクトされる' do
         withdraw_link = find_all('a')[8].native.inner_text
         withdraw_link = withdraw_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link withdraw_link

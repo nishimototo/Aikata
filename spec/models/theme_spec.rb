@@ -21,8 +21,6 @@ RSpec.describe 'Themeモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-
-
   end
 
   describe 'アソシエーションのテスト' do
@@ -31,6 +29,7 @@ RSpec.describe 'Themeモデルのテスト', type: :model do
         expect(Theme.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context 'Answerモデルとの関係' do
       it '1:Nとなっている' do
         expect(Theme.reflect_on_association(:answers).macro).to eq :has_many
