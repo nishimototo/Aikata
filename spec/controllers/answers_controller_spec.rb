@@ -8,22 +8,22 @@ RSpec.describe AnswersController, type: :controller do
 
   describe 'indexアクションのテスト' do
     it '正常なレスポンスを返すか' do
-      get :index, params: {theme_id: theme.id}
+      get :index, params: { theme_id: theme.id }
       expect(response).to be_successful
     end
     it '200レスポンスが返ってきているか' do
-      get :index, params: {theme_id: theme.id}
+      get :index, params: { theme_id: theme.id }
       expect(response).to have_http_status '200'
     end
   end
 
   describe 'showアクションのテスト' do
     it '正常なレスポンスを返すか' do
-      get :show, params: {id: answer.id, theme_id: theme.id}
+      get :show, params: { id: answer.id, theme_id: theme.id }
       expect(response).to be_successful
     end
     it '200レスポンスが返ってきているか' do
-      get :show, params: {id: answer.id, theme_id: theme.id}
+      get :show, params: { id: answer.id, theme_id: theme.id }
       expect(response).to have_http_status '200'
     end
   end
@@ -41,6 +41,7 @@ RSpec.describe AnswersController, type: :controller do
         expect(response).to have_http_status "200"
       end
     end
+
     context 'ログインしていない場合' do
       it '正常なレスポンスを返さないか' do
         get :new, params: { theme_id: theme.id }

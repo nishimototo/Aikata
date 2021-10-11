@@ -49,43 +49,43 @@ RSpec.describe ThemesController, type: :controller do
     context 'ログイン済の場合' do
       it '正常にお題を投稿できる' do
         sign_in user
-        expect {
+        expect do
           post :create, params: {
             theme: {
               content: 'お題を投稿します',
-              user_id: 1
-            }
+              user_id: 1,
+            },
           }
-        }.to change(user.themes, :count).by(1)
+        end.to change(user.themes, :count).by(1)
       end
       it 'お題の投稿後にお題一覧のページにリダイレクトされるか' do
         sign_in user
         post :create, params: {
           theme: {
             content: 'お題を投稿します',
-            user_id: 1
-          }
+            user_id: 1,
+          },
         }
         expect(response).to redirect_to '/themes'
       end
       it '不正な属性を含むお題は投稿できなくなっているか' do
         sign_in user
-        expect {
+        expect do
           post :create, params: {
             theme: {
               content: nil,
-              user_id: 1
-            }
+              user_id: 1,
+            },
           }
-        }.not_to change(user.themes, :count)
+        end.not_to change(user.themes, :count)
       end
       it '不正な属性を含むお題を投稿しようとすると、お題投稿画面にリダイレクトされるか' do
         sign_in user
         post :create, params: {
           theme: {
             content: nil,
-            user_id: 1
-          }
+            user_id: 1,
+          },
         }
         expect(response).to render_template :new
       end
