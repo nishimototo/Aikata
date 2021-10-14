@@ -33,10 +33,10 @@
                 <% end %>
               <% end %>
             </p>
-          <% end %>
-          <% if current_user.me?(@user.id) %>
-             <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
-            <i class="fas fa-sad-tear"></i> <%= link_to "退会する", unsubscribe_user_path(@user) %>
+            <% if current_user.me?(@user.id) %>
+               <p><i class="fas fa-cog"></i> <%= link_to "プロフィール更新",  edit_user_path(@user) %></p>
+              <i class="fas fa-sad-tear"></i> <%= link_to "退会する", unsubscribe_user_path(@user) %>
+            <% end %>
           <% end %>
         </div>
         <div class="user_box">
