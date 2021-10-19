@@ -5,7 +5,7 @@
 また、大喜利機能を搭載し、大喜利好きな人達で交流することができます。面白い回答をすることで、相方を探す上での自己アピールの場としても活用できます。
 
 ### サイトテーマ
-目的に合わせお笑いの相方を探すことができるアプリです。
+目的に合わせたお笑いの相方探しと、大喜利ができるアプリです。
 
 ### テーマを選んだ理由
 以前、私自身がお笑い芸人として活動をしていたことがあり、コンビを解散した経験も数度あるのですが、新しい相方を探すというのは時間も労力もかかるものでした。互いに面白いと思える相手でも「漫才ではなくコントを中心に活動したい」「トリオで活動したい」「ツッコミをしたい」など考え方の違いで上手くマッチングしないことが多かったためです。周囲には、本当はコンビで活動をしたいけれど相方が見つからないためにピンで活動をしているといった方もいました。<br>
@@ -24,8 +24,8 @@
 ・気軽に大喜利を楽しみたい
 
 ## 設計書
-<a href="https://app.diagrams.net/#G17xXrefXCFVY0gO9JhP8zNlbtXLY-XOPs">ER図はこちら</a><br>
-<a href="https://docs.google.com/spreadsheets/d/1L6VXtgU9AZb0FLb-Mz_1Nrkap2JUDiIT552xLHh8aRA/edit#gid=0">テーブル定義書はこちら</a>
+<a href="https://app.diagrams.net/#G17xXrefXCFVY0gO9JhP8zNlbtXLY-XOPs">・ER図</a><br>
+<a href="https://docs.google.com/spreadsheets/d/1L6VXtgU9AZb0FLb-Mz_1Nrkap2JUDiIT552xLHh8aRA/edit#gid=0">テーブル定義書</a>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1cm9OB9tUK_2UtpwkVAx2SGtaBqLE9yh0PnGM8VZshbQ/edit#gid=0
