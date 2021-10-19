@@ -24,8 +24,8 @@
 ・気軽に大喜利を楽しみたい
 
 ## 設計書
-<a href="https://app.diagrams.net/#G17xXrefXCFVY0gO9JhP8zNlbtXLY-XOPs">ER図はこちら</a><br>
-<a href="https://docs.google.com/spreadsheets/d/1L6VXtgU9AZb0FLb-Mz_1Nrkap2JUDiIT552xLHh8aRA/edit#gid=0">テーブル定義書はこちら</a>
+<a href="https://app.diagrams.net/#G17xXrefXCFVY0gO9JhP8zNlbtXLY-XOPs">・ER図</a><br>
+<a href="https://docs.google.com/spreadsheets/d/1L6VXtgU9AZb0FLb-Mz_1Nrkap2JUDiIT552xLHh8aRA/edit#gid=0">テーブル定義書</a>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1cm9OB9tUK_2UtpwkVAx2SGtaBqLE9yh0PnGM8VZshbQ/edit#gid=0
