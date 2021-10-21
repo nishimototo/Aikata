@@ -32,7 +32,7 @@ class Article < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank? #まだ誰もコメントしていない時は、記事の投稿者に通知を送る
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
