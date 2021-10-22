@@ -46,7 +46,7 @@ RSpec.describe 'ユーザー機能のテスト', type: :system do
         click_link unsubscribe_link
         expect(current_path).to eq "/users/#{user.id}/unsubscribe"
       end
-      it '大喜利一覧へをクリックするとそのユーザーの大喜利一覧画面へ遷移する' do
+      it '大喜利一覧をクリックするとそのユーザーの大喜利一覧画面へ遷移する' do
         my_answer_link = find_all('a')[13].native.inner_text
         my_answer_link = my_answer_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link my_answer_link
