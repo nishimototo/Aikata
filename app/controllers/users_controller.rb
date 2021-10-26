@@ -18,11 +18,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def unsubscribe
+  def unsubscribe #退会確認画面
     @user = User.find(params[:id])
   end
 
-  def withdraw
+  def withdraw #退会処理
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
