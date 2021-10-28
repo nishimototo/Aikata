@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
 
   def index
     @theme = Theme.find(params[:theme_id])
-    answers =  if params[:sort] == "old"
+    answers =   if params[:sort] == "old"
                   @theme.answers.includes(:user).order(created_at: :ASC)
                 elsif params[:sort] == "rate"
                   Answer.includes(:theme, :user).left_joins(:rates).where(theme_id: @theme.id).group(:id).order("SUM(rates.rate) DESC")
@@ -40,13 +40,14 @@ class AnswersController < ApplicationController
   end
 
   def answer_all
-    if params[:sort] == "old"
-      @answers = Answer.includes(:theme).order(created_at: :ASC).page(params[:page]).per(5)
-    elsif params[:sort] == "rate"
-      @answers = Answer.includes(:theme).left_joins(:rates).group(:id).order("SUM(rates.rate) DESC").page(params[:page]).per(5)
-    else
-      @answers = Answer.includes(:theme).order(created_at: :DESC).page(params[:page]).per(5)
-    end
+    answers = if params[:sort] == "old"
+                Answer.includes(:theme).order(created_at: :ASC)
+              elsif params[:sort] == "rate"
+                Answer.includes(:theme).left_joins(:rates).group(:id).order("SUM(rates.rate) DESC")
+              else
+                Answer.includes(:theme).order(created_at: :DESC)
+              end
+    @answers = answers.page(params[:page]).per(5)
   end
 
   private
