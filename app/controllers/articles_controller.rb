@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @article_comment = ArticleComment.new
-    impressionist(@article, nil, unique: [:ip_address])
+    impressionist(@article, nil, unique: [:ip_address])#同一IPからの複数回アクセスは1回で
   end
 
   def new

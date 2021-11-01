@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   def my_chart
     @user = User.find(params[:id])
     @score = Answer.joins(:rates, :user).group(:user_id).where(user_id: @user.id).select('answers.user_id, sum(rates.rate) as sum_rate')
-    @counts = @user.rate_count # 記述が長いためanswer.rbにメソッド定義
+    @counts = @user.rate_count #記述が長いためanswer.rbにメソッド定義
   end
 
   private
