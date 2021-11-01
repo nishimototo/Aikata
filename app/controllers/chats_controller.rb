@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
     rooms = current_user.user_rooms.pluck(:room_id)
     user_room = UserRoom.find_by(user_id: @user.id, room_id: rooms)#ログインユーザーとチャット相手、共通のuser_room
 
-    if user_room.nil? 
+    if user_room.nil? #共通のuser_roomがない時とある時で分岐
       @room = Room.new
       @room.save
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
