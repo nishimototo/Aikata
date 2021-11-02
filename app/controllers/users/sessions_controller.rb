@@ -28,10 +28,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
   protected
 
+  #退会したユーザーがログインできないように
   def reject_user
-    @user = User.find_by(email: params[:user][:email].downcase)
+    @user = User.find_by(email: params[:user][:email].downcase) #ログイン時に入力したメールアドレスを持つユーザーが存在するかの分岐用
     if @user
-      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
+      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false) #入力されたPWが正しい && user.rbのactive_for_authenticationがfalse
         flash[:alert] = "このアカウントは退会済みです。"
         redirect_to new_user_session_path
       end

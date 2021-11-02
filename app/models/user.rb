@@ -27,7 +27,7 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
 
-  def active_for_authentication?
+  def active_for_authentication? #退会したユーザーがログインできないように（sessions_controllerで使う）
     super && (is_deleted == false)
   end
 

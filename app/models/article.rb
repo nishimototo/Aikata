@@ -28,11 +28,11 @@ class Article < ApplicationRecord
 
   # コメント通知
   def create_notification_comment!(current_user, comment_id)
-    temp_ids = ArticleComment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct # コメントしている人のuser_idを重複なしで取得（自分がコメントした分は除く）
+    temp_ids = ArticleComment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct # コメントしている人のuser_idを重複なしで全て取得し全員に通知する（自分がコメントした分は除く）
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank? #まだ誰もコメントしていない時は、記事の投稿者に通知を送る
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
