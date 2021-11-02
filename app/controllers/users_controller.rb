@@ -18,11 +18,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def unsubscribe
+  def unsubscribe #退会確認画面
     @user = User.find(params[:id])
   end
 
-  def withdraw
+  def withdraw #退会処理
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
@@ -41,13 +41,14 @@ class UsersController < ApplicationController
 
   def my_answer
     @user = User.find(params[:id])
-    if params[:sort] == "old"
-      @answers = @user.answers.includes([:theme]).order(created_at: :ASC).page(params[:page]).per(5)
-    elsif params[:sort] == "rate"
-      @answers = Answer.includes([:theme]).left_joins(:rates).where(user_id: @user.id).group(:id).order("SUM(rates.rate) DESC").page(params[:page]).per(5)
-    else
-      @answers = @user.answers.includes([:theme]).order(created_at: :DESC).page(params[:page]).per(5)
-    end
+    answers = if params[:sort] == "old"
+                @user.answers.includes([:theme]).order(created_at: :ASC)
+              elsif params[:sort] == "rate"
+                Answer.includes([:theme]).left_joins(:rates).where(user_id: @user.id).group(:id).order("SUM(rates.rate) DESC")
+              else
+                @user.answers.includes([:theme]).order(created_at: :DESC)
+              end
+    @answers = answers.page(params[:page]).per(5)    
   end
 
   def my_chart
